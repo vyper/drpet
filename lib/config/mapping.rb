@@ -1,7 +1,9 @@
-# collection :users do
-#   entity     User
-#   repository UserRepository
-#
-#   attribute :id,   Integer
-#   attribute :name, String
-# end
+collection :pets do
+  entity     Pet
+  repository PetRepository
+
+  attribute :id,         Integer
+  attribute :name,       String
+  attribute :created_at, DateTime
+  attribute :updated_at, DateTime
+end
