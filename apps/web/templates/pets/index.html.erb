@@ -1,0 +1,11 @@
+<h1>Pets</h1>
+
+<% if pets.any? %>
+  <ul>
+    <% pets.each do |pet| %>
+    <li><%= pet.name %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No pets</p>
+<% end %>
