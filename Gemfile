@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.2.2'
+
 gem 'bundler'
 gem 'rake'
 
@@ -8,11 +10,9 @@ gem 'lotus-model',   '~> 0.4'
 
 gem 'pg'
 
+gem 'puma'
+
 group :test do
   gem 'rspec'
   gem 'capybara'
-end
-
-group :production do
-  # gem 'puma'
 end
