@@ -1,9 +1,0 @@
-language: ruby
-sudo: false
-cache: bundler
-script:
-  - bundle exec rake spec
-before_script:
-  - bundle exec lotus db prepare
-rvm:
-  - 2.2.2
