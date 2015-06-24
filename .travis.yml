@@ -2,3 +2,8 @@ addons:
   postgresql: '9.3'
 before_script:
   - psql -c 'create database drpet_test;' -U postgres
+  - bundle exec lotus db prepare
+script:
+  - bundle exec rake spec
+rvm:
+  - 2.2.2

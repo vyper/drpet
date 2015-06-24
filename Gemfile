@@ -15,4 +15,5 @@ gem 'puma'
 group :test do
   gem 'rspec'
   gem 'capybara'
+  gem 'codeclimate-test-reporter', group: :test, require: nil
 end

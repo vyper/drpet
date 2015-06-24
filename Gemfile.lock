@@ -7,11 +7,15 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    codeclimate-test-reporter (0.4.7)
+      simplecov (>= 0.7.1, < 1.0.0)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     dotenv (2.0.2)
     http_router (0.11.1)
       rack (>= 1.0.0)
       url_mount (~> 0.2.1)
+    json (1.8.3)
     lotus-controller (0.4.4)
       lotus-utils (~> 0.5)
       lotus-validations (~> 0.3)
@@ -66,6 +70,11 @@ GEM
     sequel (4.23.0)
     shotgun (0.9.1)
       rack (>= 1.0)
+    simplecov (0.10.0)
+      docile (~> 1.1.0)
+      json (~> 1.8)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     thor (0.19.1)
     tilt (2.0.1)
     url_mount (0.2.1)
@@ -79,6 +88,7 @@ PLATFORMS
 DEPENDENCIES
   bundler
   capybara
+  codeclimate-test-reporter
   lotus-model (~> 0.4)
   lotusrb (= 0.4.0)
   pg
