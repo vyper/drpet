@@ -1,9 +1,16 @@
 addons:
   postgresql: '9.3'
 before_script:
-  - psql -c 'create database drpet_test;' -U postgres
-  - bundle exec lotus db migrate
+- psql -c 'create database drpet_test;' -U postgres
+- bundle exec lotus db migrate
 script:
-  - bundle exec rake spec
+- bundle exec rake spec
 rvm:
-  - 2.2.2
+- 2.2.2
+deploy:
+  provider: heroku
+  api_key:
+    secure: VANgnA//Xmay1QhFcaxbz+48fiTLBsyYeukv8j15V/bvWvzK3WVTFFi6qGsU+eUJ+/TBHtjgWgn8B+Te1uLqisOe7JxKCeQZ2CckL2kADMKs1y8ZlfKJ204rLF6c4OMatp2Djz2CA2UmTZ/aaix3O1jFlx317viodHQQkXruKx7PVDEw/IOQA6XpAPeLIdEm98gljmtjVZ6L+T8T+qNmeY+8ayHQAqpkoWAz3lO4Kf9rwsAmprMUgooLlH7wx3zbJ9zAtZ0hYgPPcL4jWmNou9v2p9vz5CE7coYzjYguYf/leO1xzE1L+ULDCzIcqfaju5c0ghWE1LNKJei5z5MvHneCctmn+4Cr51UEdAKw/cBqldRbIz+33zGSqRDXxQnw2gXMzLh3gamcdRNjkyT27b1K7xGc+0vlGKWWe4cDXQdLL2eUURKjjBY3FetC2495hmFg/9dS20godH9xbYdbESqtQzsBXFconoRS6ZqipSCVJ0qtRRMKJtMSR0nBvaK5zMhiJ2FiPQWABGvFJ0z1i5BQjvW4Dq2FTxF7KBErR6oqxmVsM2Ok9eLEEhLCTNJb2zxZrFSrlPDSnnUIMGdzH6mpQNChQ4U6FUTiYv7Pka39OWlmXQ0C2ixahQnQg0QcpTKrykkRnp/0kJrjF1+wHRKoUQIRgibgD/2YgzlglaY=
+  app: drpet
+  on:
+    repo: vyper/drpet
