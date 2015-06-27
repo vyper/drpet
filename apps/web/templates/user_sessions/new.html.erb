@@ -1,0 +1,10 @@
+<h1>Login</h1>
+
+<%=
+  form_for :user, routes.new_session_path do
+    text_field :email, placeholder: 'e-mail'
+    password_field :password, placeholder: 'password'
+
+    submit 'Login!'
+  end
+%>
