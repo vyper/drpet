@@ -5,12 +5,22 @@ ruby '2.2.2'
 gem 'bundler'
 gem 'rake'
 
+# lotus
 gem 'lotusrb',       '0.4.0'
 gem 'lotus-model',   '~> 0.4'
 
+# auth
+gem 'bcrypt'
+
+# database
 gem 'pg'
 
+# webserver
 gem 'puma'
+
+group :development, :test do
+  gem 'byebug'
+end
 
 group :test do
   gem 'rspec'
