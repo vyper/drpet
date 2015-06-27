@@ -6,7 +6,7 @@ My playground for [lotus](http://lotusrb.org).
 ## Curious?
 To you see app running is very simple!
 
-You access [http://drpet.herokuapp.com] and you use email `drpet@mcorp.io` and password `123456`.
+You access http://drpet.herokuapp.com and you use email `drpet@mcorp.io` and password `123456`.
 
 ## TODO
 - [ ] specs!
@@ -19,3 +19,6 @@ You access [http://drpet.herokuapp.com] and you use email `drpet@mcorp.io` and p
 - [ ] crud for pets
 - [ ] crud for events
 - [ ] add instructions for clone and run
+- [ ] create matchers for specs
+  - [ ] for validations
+- [ ] improve auth to don't repeat `authenticate!` in all controllers
