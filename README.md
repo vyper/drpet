@@ -2,9 +2,15 @@
 
 My playground for [lotus](http://lotusrb.org).
 
+
+## Curious?
+To you see app running is very simple!
+
+You access [http://drpet.herokuapp.com] and you use email `drpet@mcorp.io` and password `123456`.
+
 ## TODO
 - [ ] specs!
-  - [ ] entities
+  - [x] entities
   - [ ] repositories
   - [ ] controllers
   - [ ] views
@@ -12,3 +18,4 @@ My playground for [lotus](http://lotusrb.org).
 - [ ] auth for api
 - [ ] crud for pets
 - [ ] crud for events
+- [ ] add instructions for clone and run

@@ -1,5 +1,7 @@
 class Pet
   include Lotus::Entity
+  include Lotus::Validations
 
-  attributes :name, :created_at, :updated_at
+  attribute :name, presence: true
+  attributes :created_at, :updated_at
 end
