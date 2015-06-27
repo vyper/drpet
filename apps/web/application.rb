@@ -184,7 +184,7 @@ module Web
       # See: http://www.rubydoc.info/gems/lotus-controller#Configuration
       controller.prepare do
         # include MyAuthentication # included in all the actions
-        # before :authenticate!    # run an authentication before callback
+        before :authenticate!    # run an authentication before callback
       end
 
       # Configure the code that will yield each time Web::View is included
