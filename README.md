@@ -15,12 +15,14 @@ You access http://drpet.herokuapp.com and you use email `drpet@mcorp.io` and pas
   - [x] ~~controllers~~
   - [ ] views
   - [ ] integrations
+  - [ ] matchers validations
 - [ ] auth for api
 - [ ] crud for pets
 - [ ] crud for events
 - [ ] add instructions for clone and run
 - [ ] create matchers for specs
-  - [ ] for validations
+  - [x] ~~alpha version for validations~~
+  - [ ] port matchers validations to gem
 - [ ] improve auth to don't repeat `authenticate!` in all controllers
 - [x] ~~add flash messages~~
 - [ ] add validations on [controller params](https://github.com/lotus/controller#params)
