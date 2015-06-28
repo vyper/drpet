@@ -1,4 +1,4 @@
-# Dr Pet [![Build Status](https://travis-ci.org/vyper/drpet.svg?branch=master)](https://travis-ci.org/vyper/drpet) [![Code Climate](https://codeclimate.com/github/vyper/drpet/badges/gpa.svg)](https://codeclimate.com/github/vyper/drpet) [![Dependency Status](https://gemnasium.com/vyper/drpet.svg)](https://gemnasium.com/vyper/drpet)
+# Dr Pet [![Build Status](https://travis-ci.org/vyper/drpet.svg?branch=master)](https://travis-ci.org/vyper/drpet) [![Code Climate](https://codeclimate.com/github/vyper/drpet/badges/gpa.svg)](https://codeclimate.com/github/vyper/drpet) [![Test Coverage](https://codeclimate.com/github/vyper/drpet/badges/coverage.svg)](https://codeclimate.com/github/vyper/drpet/coverage) [![Dependency Status](https://gemnasium.com/vyper/drpet.svg)](https://gemnasium.com/vyper/drpet)
 
 My playground for [lotus](http://lotusrb.org).
 
@@ -10,9 +10,9 @@ You access http://drpet.herokuapp.com and you use email `drpet@mcorp.io` and pas
 
 ## TODO
 - [ ] specs!
-  - [x] entities
+  - [x] ~~entities~~
   - [ ] repositories
-  - [x] controllers
+  - [x] ~~controllers~~
   - [ ] views
   - [ ] integrations
 - [ ] auth for api
@@ -22,4 +22,6 @@ You access http://drpet.herokuapp.com and you use email `drpet@mcorp.io` and pas
 - [ ] create matchers for specs
   - [ ] for validations
 - [ ] improve auth to don't repeat `authenticate!` in all controllers
-- [ ] add flash message
+- [ ] add flash messages
+- [ ] add validations on [controller params](https://github.com/lotus/controller#params)
+- [ ] add repository on initialize of controllers
