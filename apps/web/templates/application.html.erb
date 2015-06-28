@@ -4,6 +4,10 @@
     <title>Dr Pet</title>
   </head>
   <body>
+    <% if flash[:notice] %>
+      <p><%= flash[:notice] %></p>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

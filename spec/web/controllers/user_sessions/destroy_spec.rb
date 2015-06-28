@@ -15,6 +15,7 @@ describe Web::Controllers::UserSessions::Destroy do
       expect(response[1]['Location']).to eq '/'
 
       expect(action.exposures[:session][:logged_user_id]).to be_nil
+      expect(action.exposures[:flash][:notice]).to eq 'Signed out successfull' # TODO: i18n
     end
   end
 
@@ -27,6 +28,7 @@ describe Web::Controllers::UserSessions::Destroy do
       expect(response[0]).to eq 302
       # TODO How I can use routes.root_path?
       expect(response[1]['Location']).to eq '/'
+      expect(action.exposures[:flash][:notice]).to eq 'Signed out successfull' # TODO: i18n
     end
   end
 end

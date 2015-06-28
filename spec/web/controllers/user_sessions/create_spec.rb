@@ -17,6 +17,7 @@ describe Web::Controllers::UserSessions::Create do
     # TODO How I can use routes.root_path?
     expect(response[1]['Location']).to eq '/'
     expect(action.exposures[:session][:logged_user_id]).to eq @user.id
+    expect(action.exposures[:flash][:notice]).to eq 'Signed in successfully' # TODO: i18n
   end
 
   context 'invalid password' do
@@ -28,6 +29,7 @@ describe Web::Controllers::UserSessions::Create do
       expect(response[0]).to eq 302
       # TODO How I can use routes.new_session_path?
       expect(response[1]['Location']).to eq '/login'
+      expect(action.exposures[:flash][:notice]).to eq 'Invalid email or password' # TODO: i18n
     end
   end
 
@@ -40,6 +42,7 @@ describe Web::Controllers::UserSessions::Create do
       expect(response[0]).to eq 302
       # TODO How I can use routes.new_session_path?
       expect(response[1]['Location']).to eq '/login'
+      expect(action.exposures[:flash][:notice]).to eq 'Invalid email or password' # TODO: i18n
     end
   end
 end
