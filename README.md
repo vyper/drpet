@@ -12,7 +12,7 @@ You access http://drpet.herokuapp.com and you use email `drpet@mcorp.io` and pas
 - [ ] specs!
   - [x] entities
   - [ ] repositories
-  - [ ] controllers
+  - [x] controllers
   - [ ] views
   - [ ] integrations
 - [ ] auth for api
@@ -22,3 +22,4 @@ You access http://drpet.herokuapp.com and you use email `drpet@mcorp.io` and pas
 - [ ] create matchers for specs
   - [ ] for validations
 - [ ] improve auth to don't repeat `authenticate!` in all controllers
+- [ ] add flash message
