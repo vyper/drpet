@@ -4,7 +4,7 @@ module Web::Controllers::UserSessions
 
     def call(params)
       session[:logged_user_id] = nil
-      redirect_to routes.new_session_path
+      redirect_to routes.root_path
     end
 
     private
