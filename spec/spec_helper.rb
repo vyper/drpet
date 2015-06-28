@@ -1,6 +1,9 @@
 # Require this file for unit tests
 ENV['LOTUS_ENV'] ||= 'test'
 
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
+
 require_relative '../config/environment'
 Lotus::Application.preload!
 
