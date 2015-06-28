@@ -85,5 +85,22 @@ RSpec.describe User do
         expect(subject.encrypted_password).to eq encrypted_password
       end
     end
+
+    context 'returns encrypted password on password to compare' do
+      context 'when exists encrypted_password' do
+        let(:password)           { 'senha' }
+        let(:encrypted_password) { BCrypt::Password.create(password) }
+
+        subject { described_class.new encrypted_password: encrypted_password }
+
+        it 'returns encrypted password' do
+          expect(subject.password).to eq password
+        end
+      end
+
+      it 'when does not exists encrypted_password' do
+        expect(subject.password).to be_nil
+      end
+    end
   end
 end

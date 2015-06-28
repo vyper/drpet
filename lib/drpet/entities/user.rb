@@ -12,7 +12,9 @@ class User
   attributes :encrypted_password, :created_at, :updated_at
 
   def password
-    @password ||= BCrypt::Password.new(encrypted_password) unless @password.nil?
+    unless @encrypted_password.nil?
+      @password ||= BCrypt::Password.new(encrypted_password)
+    end
   end
 
   def password=(password)
