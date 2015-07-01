@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 RSpec.describe User do
-  include MyMatchers
-
   #
   # validations
   #
