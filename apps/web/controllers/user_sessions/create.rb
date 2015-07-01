@@ -13,7 +13,7 @@ module Web::Controllers::UserSessions
         redirect_to routes.root_path
       else
         flash[:notice] = 'Invalid email or password' # TODO i18n?
-        redirect_to routes.new_session_path
+        redirect_to routes.new_user_session_path
       end
     end
 
