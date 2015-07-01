@@ -13,6 +13,7 @@ collection :users do
   repository UserRepository
 
   attribute :id,                 Integer
+  attribute :uid,                String
   attribute :email,              String
   attribute :encrypted_password, String
   attribute :created_at,         DateTime
