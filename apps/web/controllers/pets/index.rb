@@ -14,7 +14,7 @@ module Web::Controllers::Pets
     # TODO: Improve this!
     def authenticate!
       unless session['logged_user_id']
-        redirect_to routes.new_session_path
+        redirect_to routes.new_user_session_path
       end
     end
   end

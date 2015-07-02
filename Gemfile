@@ -23,6 +23,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'shoulda-lotus', github: 'mcorp/shoulda-lotus'
   gem 'rspec'
   gem 'capybara'
   gem 'codeclimate-test-reporter', group: :test, require: nil

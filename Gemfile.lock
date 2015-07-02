@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/mcorp/shoulda-lotus.git
+  revision: c4d73a694e7b8ee705ad638cdde875fdab50bda3
+  specs:
+    shoulda-lotus (0.0.3)
+      lotus-validations (~> 0.3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -101,3 +108,4 @@ DEPENDENCIES
   puma
   rake
   rspec
+  shoulda-lotus!

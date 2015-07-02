@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 RSpec.describe Pet do
-  include MyMatchers
-
   #
   # validations
   #
