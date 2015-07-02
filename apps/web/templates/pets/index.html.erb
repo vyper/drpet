@@ -1,6 +1,6 @@
 <% if logged_user? %>
   <%=
-    form_for :user, routes.destroy_session_path, method: :delete do
+    form_for :user, routes.destroy_user_session_path, method: :delete do
       submit 'Logout'
     end
   %>

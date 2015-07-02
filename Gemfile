@@ -11,6 +11,7 @@ gem 'lotus-model',   '~> 0.4'
 
 # auth
 gem 'bcrypt'
+gem 'omniauth-facebook'
 
 # database
 gem 'pg'

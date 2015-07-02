@@ -2,3 +2,5 @@
 /db/drpet_test
 
 /coverage
+
+.env

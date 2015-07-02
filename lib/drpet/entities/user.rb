@@ -9,7 +9,7 @@ class User
 
   attribute :email,    presence: true, format: REGEX_EMAIL
   attribute :password, presence: true
-  attributes :encrypted_password, :created_at, :updated_at
+  attributes :uid, :encrypted_password, :created_at, :updated_at
 
   def password
     unless @encrypted_password.nil?
