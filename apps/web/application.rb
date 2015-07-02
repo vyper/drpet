@@ -1,5 +1,8 @@
 require 'lotus/helpers'
 
+# TODO Found better local for require
+require 'omniauth-facebook'
+
 module Web
   class Application < Lotus::Application
     configure do
@@ -78,6 +81,11 @@ module Web
       # Configure Rack middleware for this application
       #
       # middleware.use Rack::Protection
+      # TODO Check for duplicate session definition. Issue opened on github: https://github.com/lotus/lotus/issues/283
+      middleware.use Rack::Session::Cookie, secret: ENV['SESSIONS_SECRET']
+      middleware.use OmniAuth::Builder do
+        provider :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET']
+      end
 
       # Default format for the requests that don't specify an HTTP_ACCEPT header
       # Argument: A symbol representation of a mime type, default to :html
