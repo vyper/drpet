@@ -99,7 +99,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
-    sequel (4.23.0)
+    sequel (4.24.0)
     shotgun (0.9.1)
       rack (>= 1.0)
     simplecov (0.10.0)
