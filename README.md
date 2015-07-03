@@ -23,8 +23,8 @@ You access http://drpet.herokuapp.com and you use email `drpet@mcorp.io` and pas
 - [x] ~~create matchers for specs~~
   - [x] ~~alpha version for validations~~
   - [x] ~~port matchers validations to gem~~ > ported to [shoulda-lotus](https://github.com/mcorp/shoulda-lotus)
-- [ ] improve auth to don't repeat `authenticate!` in all controllers
+- [x] ~~improve auth to don't repeat `authenticate!` in all controllers~~
 - [x] ~~add flash messages~~
 - [ ] add validations on [controller params](https://github.com/lotus/controller#params)
 - [ ] add repository on initialize of controllers
-- [x] improve flash messages to don't repeat 'expose :flash' in all controllers
+- [x] ~~improve flash messages to don't repeat 'expose :flash' in all controllers~~

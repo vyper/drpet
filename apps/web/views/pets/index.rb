@@ -3,7 +3,7 @@ module Web::Views::Pets
     include Web::View
 
     def logged_user?
-      !session[:logged_user_id].nil?
+      current_user
     end
   end
 end

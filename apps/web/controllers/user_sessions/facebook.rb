@@ -14,11 +14,5 @@ module Web::Controllers::UserSessions
         redirect_to routes.new_user_session_path
       end
     end
-
-    private
-
-    # TODO: Improve this!
-    def authenticate!
-    end
   end
 end
