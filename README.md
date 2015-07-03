@@ -11,7 +11,7 @@ You access http://drpet.herokuapp.com and you use email `drpet@mcorp.io` and pas
 ## TODO
 - [ ] specs!
   - [x] ~~entities~~
-  - [ ] repositories
+  - [x] repositories
   - [x] ~~controllers~~
   - [ ] views
   - [ ] integrations
@@ -27,4 +27,4 @@ You access http://drpet.herokuapp.com and you use email `drpet@mcorp.io` and pas
 - [x] ~~add flash messages~~
 - [ ] add validations on [controller params](https://github.com/lotus/controller#params)
 - [ ] add repository on initialize of controllers
-- [ ] improve flash messages to don't repeat 'expose :flash' in all controllers
+- [x] improve flash messages to don't repeat 'expose :flash' in all controllers

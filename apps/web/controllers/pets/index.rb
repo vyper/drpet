@@ -3,7 +3,6 @@ module Web::Controllers::Pets
     include Web::Action
 
     expose :pets
-    expose :flash
 
     def call(params)
       @pets = PetRepository.all

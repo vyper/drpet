@@ -2,6 +2,8 @@ require 'lotus/helpers'
 
 # TODO Found better local for require
 require 'omniauth-facebook'
+# TODO Found better local for require
+require_relative 'controllers/flashable'
 
 module Web
   class Application < Lotus::Application
@@ -191,6 +193,7 @@ module Web
       #
       # See: http://www.rubydoc.info/gems/lotus-controller#Configuration
       controller.prepare do
+        include Web::Controllers::Flashable
         # include MyAuthentication # included in all the actions
         before :authenticate!    # run an authentication before callback
       end

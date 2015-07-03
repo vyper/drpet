@@ -2,8 +2,6 @@ module Web::Controllers::UserSessions
   class Facebook
     include Web::Action
 
-    expose :flash
-
     def call(params)
       user = UserRepository.find_or_create_from_omniauth(params.env['omniauth.auth'])
 
