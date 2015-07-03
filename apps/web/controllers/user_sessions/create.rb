@@ -2,8 +2,6 @@ module Web::Controllers::UserSessions
   class Create
     include Web::Action
 
-    expose :flash
-
     def call(params)
       user = UserRepository.find_by_email(params['user']['email'])
 
