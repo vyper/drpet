@@ -4,11 +4,5 @@ module Web::Controllers::UserSessions
 
     def call(params)
     end
-
-    private
-
-    # TODO: Improve this!
-    def authenticate!
-    end
   end
 end
