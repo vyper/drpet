@@ -2,6 +2,8 @@ require 'lotus/helpers'
 
 # TODO Found better local for require
 require 'omniauth-facebook'
+# TODO Found better local for require
+require_relative 'controllers/flashable'
 
 module Web
   class Application < Lotus::Application
