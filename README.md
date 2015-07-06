@@ -16,6 +16,7 @@ You access http://drpet.herokuapp.com and you use email `drpet@mcorp.io` and pas
   - [ ] views
   - [x] ~~integrations~~
   - [x] ~~matchers validations~~
+  - [ ] fixtures / factories
 - [ ] add auth using google
 - [ ] auth for api
 - [ ] crud for pets
