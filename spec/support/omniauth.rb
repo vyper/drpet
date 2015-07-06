@@ -1,13 +1,17 @@
 module Omniauth
   module Mock
     def auth_mock(user)
-      OmniAuth.config.mock_auth[:github] = OpenStruct.new(
+      OmniAuth.config.mock_auth[:facebook] = OpenStruct.new(
         provider: 'facebook',
         uid: user.uid,
         info: OpenStruct.new(
           email: user.email
         )
       )
+    end
+
+    def auth_failure_mock
+      OmniAuth.config.mock_auth[:facebook] = :invalid_credentials
     end
   end
 

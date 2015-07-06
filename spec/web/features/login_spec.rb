@@ -82,7 +82,7 @@ RSpec.describe 'Login' do
     end
 
     it 'can not join using invalid credentials' do
-      OmniAuth.config.mock_auth[:facebook] = :invalid_credentials
+      auth_failure_mock
 
       visit '/login'
       click_link 'using facebook'
