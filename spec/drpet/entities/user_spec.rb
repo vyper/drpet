@@ -8,6 +8,11 @@ RSpec.describe User do
   it { is_expected.to validate_presence_of(:password) }
   it { is_expected.to allow_value('leo@nospam.org').for(:email) }
   it { is_expected.to_not allow_value('leo').for(:email) }
+  it { is_expected.to coerce_attribute(:email).to(String) }
+  it { is_expected.to coerce_attribute(:password).to(String) }
+  it { is_expected.to coerce_attribute(:uid).to(String) }
+  it { is_expected.to coerce_attribute(:created_at).to(DateTime) }
+  it { is_expected.to coerce_attribute(:updated_at).to(DateTime) }
 
   #
   # methods
@@ -55,6 +60,14 @@ RSpec.describe User do
 
       it 'sets encrypted password to encrypted_password' do
         expect(subject.encrypted_password).to eq encrypted_password
+      end
+
+      context 'receive a integer password' do
+        let(:password) { 1234 }
+
+        it 'sets encrypted password to password' do
+          expect(subject.password).to eq encrypted_password
+        end
       end
     end
 

@@ -66,7 +66,7 @@ RSpec.describe UserRepository do
       it 'saves uid when found user using email' do
         expect {
           described_class.find_or_create_from_omniauth(oauth)
-        }.to change { UserRepository.find(@without_uid_user.id).uid }.from(nil).to('222222')
+        }.to change { UserRepository.find(@without_uid_user.id).uid }.from('').to('222222')
       end
     end
 

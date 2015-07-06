@@ -7,9 +7,12 @@ class User
   # TODO Improve regex
   REGEX_EMAIL = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
 
-  attribute :email,    presence: true, format: REGEX_EMAIL
-  attribute :password, presence: true
-  attributes :uid, :encrypted_password, :created_at, :updated_at
+  attribute :email,      type: String, presence: true, format: REGEX_EMAIL
+  attribute :password,   type: String, presence: true
+  attribute :uid,        type: String
+  attribute :created_at, type: DateTime
+  attribute :updated_at, type: DateTime
+  attributes :encrypted_password # TODO: do we need use coercion here?
 
   def password
     unless @encrypted_password.nil?
@@ -18,7 +21,7 @@ class User
   end
 
   def password=(password)
-    if password.nil? || password.empty?
+    if password.nil? || password.to_s.empty?
       @password = nil
       @encrypted_password = nil
     else
