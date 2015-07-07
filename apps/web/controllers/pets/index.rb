@@ -9,14 +9,5 @@ module Web::Controllers::Pets
     def call(params)
       @pets = PetRepository.all
     end
-
-    private
-
-    # TODO: Improve this!
-    def authenticate!
-      unless session['logged_user_id']
-        redirect_to routes.new_user_session_path
-      end
-    end
   end
 end
