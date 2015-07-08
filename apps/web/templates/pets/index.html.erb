@@ -12,7 +12,14 @@
 <% if pets.any? %>
   <ul>
     <% pets.each do |pet| %>
-    <li><%= pet.name %></li>
+      <li>
+        <%= pet.name %>
+        <%=
+          form_for :pet, routes.pet_path(pet.id), method: :delete do
+            submit 'Destroy'
+          end
+        %>
+      </li>
     <% end %>
   </ul>
 <% else %>

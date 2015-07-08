@@ -18,7 +18,7 @@ RSpec.describe 'Pets' do
     end
 
     it 'new' do
-      visit '/'
+      visit '/pets/new'
 
       expect(current_path).to eq '/login'
     end
@@ -83,6 +83,25 @@ RSpec.describe 'Pets' do
         expect(page.body).to have_css('li')
         expect(page.body).to have_content 'Romeo'
         expect(page.body).to_not have_content 'No pets'
+      end
+    end
+
+    context 'destroy' do
+      before do
+        @pet = PetRepository.create(Pet.new(name: 'Bacon'))
+      end
+
+      it 'destroys a pet' do
+        visit '/pets'
+
+        within 'ul' do
+          click_on 'Destroy'
+        end
+
+        expect(current_path).to eq '/pets'
+        expect(page.body).to_not have_css('li')
+        expect(page.body).to_not have_content 'Bacon'
+        expect(page.body).to have_content 'No pets'
       end
     end
   end

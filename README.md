@@ -19,13 +19,14 @@ You have two options:
   - [x] ~~integrations~~
   - [x] ~~matchers validations~~
   - [ ] fixtures / factories
+- [ ] improve layout
 - [ ] add auth using google
 - [ ] auth for api
 - [ ] crud for pets
   - [x] ~~create~~
   - [x] ~~read~~
   - [ ] update
-  - [ ] delete
+  - [x] delete
 - [ ] crud for events
   - [ ] create
   - [ ] read
