@@ -9,3 +9,5 @@ delete '/logout', to: 'user_sessions#destroy',  as: :destroy_user_session
 # TODO: In the future we can support others
 get '/auth/failure',           to: 'user_sessions#failure',  as: :auth_failure
 get '/auth/facebook/callback', to: 'user_sessions#facebook', as: :auth_facebook_callback
+
+resources :pets, expect: :show

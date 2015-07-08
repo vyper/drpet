@@ -1,13 +1,13 @@
 module Web::Controllers::Pets
-  class Index
+  class New
     include Web::Action
 
     before :authenticate!
 
-    expose :pets
+    expose :pet
 
     def call(params)
-      @pets = PetRepository.all
+      @pet = Pet.new
     end
   end
 end

@@ -6,7 +6,9 @@ My playground for [lotus](http://lotusrb.org).
 ## Curious?
 To you see app running is very simple!
 
-You access http://drpet.herokuapp.com and you use email `drpet@mcorp.io` and password `123456`.
+You have two options:
+- Access http://drpet.herokuapp.com and you use email `drpet@mcorp.io` and password `123456`; or
+- Use the API http://drpet.herokuapp.com/api/v1/pets
 
 ## TODO
 - [ ] specs!
@@ -17,16 +19,22 @@ You access http://drpet.herokuapp.com and you use email `drpet@mcorp.io` and pas
   - [x] ~~integrations~~
   - [x] ~~matchers validations~~
   - [ ] fixtures / factories
+- [ ] improve layout
 - [ ] add auth using google
 - [ ] auth for api
-- [ ] crud for pets
+- [x] ~~crud for pets~~
 - [ ] crud for events
+  - [ ] create
+  - [ ] read
+  - [ ] update
+  - [ ] delete
 - [ ] add instructions for clone and run
 - [x] ~~create matchers for specs~~
   - [x] ~~alpha version for validations~~
   - [x] ~~port matchers validations to gem~~ > ported to [shoulda-lotus](https://github.com/mcorp/shoulda-lotus)
 - [x] ~~improve auth to don't repeat `authenticate!` in all controllers~~
 - [x] ~~add flash messages~~
-- [ ] add validations on [controller params](https://github.com/lotus/controller#params)
+- [x] ~~add validations on [controller params](https://github.com/lotus/controller#params)~~
 - [ ] add repository on initialize of controllers
 - [x] ~~improve flash messages to don't repeat 'expose :flash' in all controllers~~
+- [ ] review `TODO` on source code

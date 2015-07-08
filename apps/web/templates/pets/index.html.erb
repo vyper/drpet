@@ -1,19 +1,21 @@
-<% if logged_user? %>
-  <%=
-    form_for :user, routes.destroy_user_session_path, method: :delete do
-      submit 'Logout'
-    end
-  %>
-<% end %>
-
 <h1>Pets</h1>
 
 <% if pets.any? %>
   <ul>
     <% pets.each do |pet| %>
-    <li><%= pet.name %></li>
+      <li>
+        <%= pet.name %>
+        <%= link_to 'Edit', routes.edit_pet_path(pet.id) %>
+        <%=
+          form_for :pet, routes.pet_path(pet.id), method: :delete do
+            submit 'Destroy'
+          end
+        %>
+      </li>
     <% end %>
   </ul>
 <% else %>
   <p>No pets</p>
 <% end %>
+
+<%= link_to 'Add new pet', routes.new_pet_path %>

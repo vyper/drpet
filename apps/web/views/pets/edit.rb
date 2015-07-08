@@ -1,5 +1,5 @@
 module Web::Views::Pets
-  class Index
+  class Edit
     include Web::View
   end
 end

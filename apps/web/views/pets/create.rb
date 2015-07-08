@@ -1,5 +1,7 @@
 module Web::Views::Pets
-  class Index
+  class Create
     include Web::View
+
+    template 'pets/new'
   end
 end

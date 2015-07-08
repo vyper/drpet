@@ -1,0 +1,21 @@
+<h1>New pet</h1>
+
+<% unless params.valid? %>
+  <div class="errors">
+    <h3>There was a problem with your pet</h3>
+    <ul>
+      <% params.errors.each do |error| %>
+        <%# TODO Improve error messages %>
+        <li><%= error.attribute_name %> => <%= error.validation %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%=
+  form_for :pet, routes.pets_path do
+    text_field :name, value: pet.name, placeholder: 'name'
+
+    submit 'Create'
+  end
+%>
