@@ -1,12 +1,3 @@
-<%# TODO: DRY %>
-<% if logged_user? %>
-  <%=
-    form_for :user, routes.destroy_user_session_path, method: :delete do
-      submit 'Logout'
-    end
-  %>
-<% end %>
-
 <h1>Pets</h1>
 
 <% if pets.any? %>
