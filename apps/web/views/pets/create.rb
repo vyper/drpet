@@ -3,10 +3,5 @@ module Web::Views::Pets
     include Web::View
 
     template 'pets/new'
-
-    # TODO DRY
-    def logged_user?
-      current_user
-    end
   end
 end

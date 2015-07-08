@@ -4,6 +4,7 @@ module Web
       def self.included(action)
         action.class_eval do
           expose :current_user
+          expose :logged_user?
         end
       end
 
@@ -11,6 +12,10 @@ module Web
 
       def authenticate!
         redirect_to routes.new_user_session_path unless authenticated?
+      end
+
+      def logged_user?
+        authenticated?
       end
 
       def authenticated?
