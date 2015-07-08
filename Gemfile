@@ -6,6 +6,8 @@ gem 'bundler'
 gem 'rake'
 
 # lotus
+gem 'lotus-utils',  github: 'lotus/utils'
+gem 'lotus-router', github: 'lotus/router'
 gem 'lotusrb',       '0.4.0'
 gem 'lotus-model',   '~> 0.4'
 

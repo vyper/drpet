@@ -1,3 +1,17 @@
+GIT
+  remote: git://github.com/lotus/router.git
+  revision: d4b49b2bfd0c4c0a70394c24a25882579857ce1e
+  specs:
+    lotus-router (0.4.2)
+      http_router (~> 0.11)
+      lotus-utils (~> 0.5, >= 0.5.1)
+
+GIT
+  remote: git://github.com/lotus/utils.git
+  revision: a25b6f409d651e10a824a547553994518c0f9321
+  specs:
+    lotus-utils (0.5.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -33,10 +47,6 @@ GEM
     lotus-model (0.4.0)
       lotus-utils (~> 0.5)
       sequel (~> 4.9)
-    lotus-router (0.4.1)
-      http_router (~> 0.11)
-      lotus-utils (~> 0.5)
-    lotus-utils (0.5.0)
     lotus-validations (0.3.2)
       lotus-utils (~> 0.4)
     lotus-view (0.4.2)
@@ -119,6 +129,8 @@ DEPENDENCIES
   capybara
   codeclimate-test-reporter
   lotus-model (~> 0.4)
+  lotus-router!
+  lotus-utils!
   lotusrb (= 0.4.0)
   omniauth-facebook
   pg
