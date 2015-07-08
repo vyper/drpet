@@ -1,4 +1,4 @@
-<h1>New pet</h1>
+<h1>Edit pet</h1>
 
 <% unless params.valid? %>
   <div class="errors">
@@ -13,9 +13,9 @@
 <% end %>
 
 <%=
-  form_for :pet, routes.pets_path do
+  form_for :pet, routes.pet_path(pet.id), method: :patch do
     text_field :name, value: pet.name, placeholder: 'name'
 
-    submit 'Create'
+    submit 'Update'
   end
 %>

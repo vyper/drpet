@@ -22,11 +22,7 @@ You have two options:
 - [ ] improve layout
 - [ ] add auth using google
 - [ ] auth for api
-- [ ] crud for pets
-  - [x] ~~create~~
-  - [x] ~~read~~
-  - [ ] update
-  - [x] delete
+- [x] ~~crud for pets~~
 - [ ] crud for events
   - [ ] create
   - [ ] read

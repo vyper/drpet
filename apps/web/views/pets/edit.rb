@@ -1,5 +1,5 @@
 module Web::Views::Pets
-  class New
+  class Edit
     include Web::View
   end
 end

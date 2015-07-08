@@ -86,6 +86,33 @@ RSpec.describe 'Pets' do
       end
     end
 
+    context 'edit' do
+      before do
+        @pet = PetRepository.create(Pet.new(name: 'Bacon'))
+      end
+
+      it 'shows logout button' do
+        visit "/pets/#{@pet.id}/edit"
+
+        expect(page.body).to have_button 'Logout'
+      end
+
+      it 'edit a pet' do
+        visit "/pets/#{@pet.id}/edit"
+
+        within '#pet-form' do
+          fill_in 'pet-name', with: 'Zabelê'
+        end
+
+        click_on 'Update'
+
+        expect(current_path).to eq '/pets'
+        expect(page.body).to have_css('li')
+        expect(page.body).to have_content 'Zabelê'
+        expect(page.body).to_not have_content 'No pets'
+      end
+    end
+
     context 'destroy' do
       before do
         @pet = PetRepository.create(Pet.new(name: 'Bacon'))
