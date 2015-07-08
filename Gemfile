@@ -6,8 +6,10 @@ gem 'bundler'
 gem 'rake'
 
 # lotus
-gem 'lotusrb',      github: 'lotus/lotus'
-gem 'lotus-model',  github: 'lotus/model'
+gem 'lotus-utils',  github: 'lotus/utils'
+gem 'lotus-router', github: 'lotus/router'
+gem 'lotusrb',       '0.4.0'
+gem 'lotus-model',   '~> 0.4'
 
 # auth
 gem 'bcrypt'
