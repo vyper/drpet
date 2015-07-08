@@ -18,7 +18,7 @@ module Web
       end
 
       def current_user
-        @current_user ||= UserRepository.find(session[:logged_user_id])
+        @current_user ||= UserRepository.find(session['logged_user_id'])
       end
     end
   end

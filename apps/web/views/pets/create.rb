@@ -1,6 +1,8 @@
 module Web::Views::Pets
-  class Index
+  class Create
     include Web::View
+
+    template 'pets/new'
 
     # TODO DRY
     def logged_user?
