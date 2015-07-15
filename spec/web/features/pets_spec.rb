@@ -55,7 +55,7 @@ RSpec.describe 'Pets' do
         it 'displays all pets' do
           visit '/'
 
-          expect(page.body).to have_css('li', count: 2)
+          expect(page.body).to have_css('.media-heading', count: 2)
           expect(page.body).to have_content @pet1.name
           expect(page.body).to have_content @pet2.name
           expect(page.body).to_not have_content 'No pets'
@@ -80,8 +80,7 @@ RSpec.describe 'Pets' do
         click_on 'Create'
 
         expect(current_path).to eq '/pets'
-        expect(page.body).to have_css('li')
-        expect(page.body).to have_content 'Romeo'
+        expect(page.body).to have_css('.media-heading', text: 'Romeo')
         expect(page.body).to_not have_content 'No pets'
       end
     end
@@ -107,8 +106,7 @@ RSpec.describe 'Pets' do
         click_on 'Update'
 
         expect(current_path).to eq '/pets'
-        expect(page.body).to have_css('li')
-        expect(page.body).to have_content 'Zabelê'
+        expect(page.body).to have_css('.media-heading', text: 'Zabelê')
         expect(page.body).to_not have_content 'No pets'
       end
     end
@@ -121,12 +119,12 @@ RSpec.describe 'Pets' do
       it 'destroys a pet' do
         visit '/pets'
 
-        within 'ul' do
+        within '.media-body' do
           click_on 'Destroy'
         end
 
         expect(current_path).to eq '/pets'
-        expect(page.body).to_not have_css('li')
+        expect(page.body).to_not have_css('.media-heading')
         expect(page.body).to_not have_content 'Bacon'
         expect(page.body).to have_content 'No pets'
       end

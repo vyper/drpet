@@ -1,0 +1,20 @@
+<div class="col-md-4">
+  <div class="well well-sm">
+    <div class="media">
+      <a class="pull-left" href="#">
+        <img class="media-object" src="http://placehold.it/80x80">
+      </a>
+      <div class="media-body">
+        <h4 class="media-heading"><%= pet.name %></h4>
+
+        <%= link_to 'Edit', routes.edit_pet_path(pet.id) %>
+        <%# TODO Improve this, maybe changing to 'a'? %>
+        <%=
+          form_for :pet, routes.pet_path(pet.id), method: :delete do
+            submit 'Destroy'
+          end
+        %>
+      </div>
+    </div>
+  </div>
+</div>
