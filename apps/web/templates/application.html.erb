@@ -1,21 +1,62 @@
-<!doctype HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dr Pet</title>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/flat-ui.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
   </head>
   <body>
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to 'Dr Pet', routes.root_path, class: 'navbar-brand' %>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <% if logged_user? %>
+            <ul class="nav navbar-nav">
+              <li class="active">
+                <%= link_to 'Pets', routes.pets_path %>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <%# TODO Improve this, maybe changing to 'a'? %>
+                <%=
+                  form_for :user, routes.destroy_user_session_path, method: :delete do
+                    submit 'Logout'
+                  end
+                %>
+              </li>
+            </ul>
+          <% end %>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
     <% if flash[:notice] %>
       <p><%= flash[:notice] %></p>
     <% end %>
 
-    <% if logged_user? %>
-      <%=
-        form_for :user, routes.destroy_user_session_path, method: :delete do
-          submit 'Logout'
-        end
-      %>
-    <% end %>
-
     <%= yield %>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="/javascripts/flat-ui.min.js"></script>
   </body>
 </html>

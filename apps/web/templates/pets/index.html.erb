@@ -1,21 +1,15 @@
 <h1>Pets</h1>
 
-<% if pets.any? %>
-  <ul>
-    <% pets.each do |pet| %>
-      <li>
-        <%= pet.name %>
-        <%= link_to 'Edit', routes.edit_pet_path(pet.id) %>
-        <%=
-          form_for :pet, routes.pet_path(pet.id), method: :delete do
-            submit 'Destroy'
-          end
-        %>
-      </li>
+<div class="container">
+  <div class="row">
+    <% if pets.any? %>
+      <% pets.each do |pet| %>
+        <%= render partial: 'pet', locals: { pet: pet } %>
+      <% end %>
+    <% else %>
+      <p>No pets</p>
     <% end %>
-  </ul>
-<% else %>
-  <p>No pets</p>
-<% end %>
+  </div>
+</div>
 
 <%= link_to 'Add new pet', routes.new_pet_path %>
