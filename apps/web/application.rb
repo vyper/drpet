@@ -237,6 +237,10 @@ module Web
       # scheme 'https'
       # host   'example.org'
       # port   443
+
+      # TODO Improve this in the future
+      # Serve static assets during development
+      serve_assets      true
     end
   end
 end
