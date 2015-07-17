@@ -6,7 +6,7 @@ gem 'bundler'
 gem 'rake'
 
 # lotus
-gem 'lotusrb',       '0.4.0'
+gem 'lotusrb',       '0.4.0'  # TODO: Wait for fix in this issue: https://github.com/lotus/lotus/issues/304
 gem 'lotus-model',   '~> 0.4'
 
 # auth
