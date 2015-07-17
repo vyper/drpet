@@ -1,3 +1,5 @@
 # Configure your routes here
 # See: http://www.rubydoc.info/gems/lotus-router/#Usage
-resources :pets, only: :index
+namespace :v1 do
+  resources :pets, only: :index
+end
