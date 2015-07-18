@@ -7,7 +7,6 @@ module Api::Controllers::Oauth
     params do
       param :client_app do
         param :app_id,       type: String, presence: true
-        param :redirect_uri, type: String, presence: true
         param :permissions,  type: Array,  presence: true
       end
     end
@@ -20,7 +19,7 @@ module Api::Controllers::Oauth
 
       auth_grant = AuthGrantRepository.find_or_create_by_client_app_id_and_user_id(client_app.id, current_user.id)
       # TODO Ouch! Move to the interactor, please!
-      redirect_to_url = client_app_params.get('redirect_uri')
+      redirect_to_url = client_app.redirect_uri
       divisor = (redirect_to_url =~ /\?/) ? '&' : '?'
       redirect_to_url = "#{redirect_to_url}#{divisor}code=#{auth_grant.code}&response_type=code"
 

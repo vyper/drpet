@@ -12,7 +12,7 @@ describe Api::Controllers::Oauth::Create do
 
   context 'logged user' do
     let(:user_params)  { { email: 'complete@nospam.org', password: '123456', uid: '111111' } }
-    let(:app_params)   { { name: 'name', app_id: 'app_id', app_secret: 'app_secret', permissions: 'permissions' } }
+    let(:app_params)   { { name: 'name', app_id: 'app_id', app_secret: 'app_secret', permissions: 'permissions', redirect_uri: redirect_uri } }
     let(:redirect_uri) { 'http://localhost/' }
     let(:params)       { { 'client_app' => { 'app_id' => client_app.app_id, 'redirect_uri' => redirect_uri, permissions: [:read, :write] }, 'rack.session' => { 'logged_user_id' => user.id } } }
 

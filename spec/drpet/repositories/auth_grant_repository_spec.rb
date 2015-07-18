@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe AuthGrantRepository do
   let(:user_params)       { { email: 'complete@nospam.org', password: '123456', uid: '111111' } }
-  let(:client_app_params) { { name: 'name', app_id: 'app_id', app_secret: 'app_secret', permissions: 'permissions', user_id: user.id } }
+  let(:client_app_params) { { name: 'name', app_id: 'app_id', app_secret: 'app_secret', permissions: 'permissions', user_id: user.id, redirect_uri: 'http://localhost/' } }
   let(:params)            { { code: 'code', access_token: 'access_token', refresh_token: 'refresh_token', permissions: 'permissions', client_app_id: client_app.id, user_id: user.id } }
 
   let!(:user)       { UserRepository.create(User.new(user_params)) }

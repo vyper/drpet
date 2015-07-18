@@ -11,8 +11,7 @@
 
     <p>
       <%= client_app.name %> would like to access your data.
-      Only accept if you trust this application. You will then
-      be redirected back to: "<%= redirect_uri %>".
+      Only accept if you trust this application.
     </p>
 
     <p>I authorize <%= client_app.name %> to:</p>
@@ -20,7 +19,6 @@
     <%=
       form_for :client_app, routes.oauth_authorize_path do
         hidden_field :app_id, value: client_app.app_id
-        hidden_field :redirect_uri, value: redirect_uri
 
         label 'read', for: :permissions
         check_box :permissions, name: 'client_app[permissions][]', checked_value: 'read', checked: 'checked'

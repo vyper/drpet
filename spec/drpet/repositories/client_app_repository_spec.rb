@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe ClientAppRepository do
   let(:user_params) { { email: 'complete@nospam.org', password: '123456', uid: '111111' } }
-  let(:params)      { { name: 'name', app_id: 'app_id', app_secret: 'app_secret', permissions: 'permissions' } }
+  let(:params)      { { name: 'name', app_id: 'app_id', app_secret: 'app_secret', permissions: 'permissions', redirect_uri: 'http://localhost/' } }
 
   let!(:user)       { UserRepository.create(User.new(user_params)) }
   let!(:client_app) { ClientAppRepository.create(ClientApp.new(params.merge(user_id: user.id))) }
