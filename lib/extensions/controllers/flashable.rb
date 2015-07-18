@@ -1,4 +1,4 @@
-module Web
+module Extensions
   module Controllers
     module Flashable
       def self.included(action)

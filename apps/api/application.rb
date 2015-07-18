@@ -183,7 +183,7 @@ module Api
       #
       # See: http://www.rubydoc.info/gems/lotus-controller#Configuration
       controller.prepare do
-        include Api::Controllers::Authenticable
+        include Extensions::Controllers::Authenticable
       end
 
       # Configure the code that will yield each time Api::View is included

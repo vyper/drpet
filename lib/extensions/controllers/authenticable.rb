@@ -1,5 +1,4 @@
-# TODO DRY, duplicated in apps/web ):
-module Api
+module Extensions
   module Controllers
     module Authenticable
       def self.included(action)
@@ -10,6 +9,14 @@ module Api
       end
 
       private
+
+      def sign_in_and_redirect(user)
+        session[:logged_user_id] = user.id
+        flash[:notice] = 'Signed in successfully' # TODO i18n?
+        redirect_to_url = session.delete('redirect_to')
+        # TODO: Correct way to access routes in other app?
+        redirect_to redirect_to_url || '/'
+      end
 
       def authenticate!
         unless authenticated?
