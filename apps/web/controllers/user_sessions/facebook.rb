@@ -8,7 +8,8 @@ module Web::Controllers::UserSessions
       if user
         session[:logged_user_id] = user.id
         flash[:notice] = 'Signed in successfully' # TODO i18n?
-        redirect_to routes.root_path
+        redirect_to_url = session.delete('redirect_to')
+        redirect_to redirect_to_url || routes.root_path
       else
         flash[:notice] = 'PAM! Error on facebook authentication' # TODO i18n?
         redirect_to routes.new_user_session_path

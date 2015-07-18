@@ -1,3 +1,4 @@
+# TODO DRY, duplicated in apps/api ):
 module Web
   module Controllers
     module Authenticable
