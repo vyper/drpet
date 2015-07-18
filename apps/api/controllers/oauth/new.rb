@@ -6,7 +6,7 @@ module Api::Controllers::Oauth
 
     # TODO Move this to class. (:
     params do
-      param :client_id,    type: String, presence: true
+      param :app_id,       type: String, presence: true
       param :redirect_uri, type: String, presence: true
     end
 
@@ -17,7 +17,7 @@ module Api::Controllers::Oauth
     def call(params)
       redirect_to '/' unless params.valid? # TODO: Create a page for error
 
-      @client_app = ClientAppRepository.find_by_app_id(params[:client_id])
+      @client_app = ClientAppRepository.find_by_app_id(params[:app_id])
       redirect_to '/' unless @client_app # TODO: Create a page for error
 
       @redirect_uri = params[:redirect_uri]

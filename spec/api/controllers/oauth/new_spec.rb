@@ -13,7 +13,7 @@ describe Api::Controllers::Oauth::New do
     let(:user_params)  { { email: 'complete@nospam.org', password: '123456', uid: '111111' } }
     let(:app_params)   { { name: 'name', app_id: 'app_id', app_secret: 'app_secret', permissions: 'permissions' } }
     let(:redirect_uri) { 'http://localhost' }
-    let(:params)       { { 'client_id' => client_app.app_id, 'redirect_uri' => redirect_uri, 'rack.session' => { 'logged_user_id' => user.id } } }
+    let(:params)       { { 'app_id' => client_app.app_id, 'redirect_uri' => redirect_uri, 'rack.session' => { 'logged_user_id' => user.id } } }
 
     let!(:user)       { UserRepository.create(User.new(user_params)) }
     let!(:client_app) { ClientAppRepository.create(ClientApp.new(app_params.merge(user_id: user.id))) }
