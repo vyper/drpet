@@ -12,7 +12,23 @@ RSpec.describe ClientAppRepository do
     UserRepository.clear
   end
 
-  it '.find_by_app_id' do
-    expect(described_class.find_by_app_id(client_app.app_id)).to eq client_app
+  describe '.find_by_app_id' do
+    it 'when exists' do
+      expect(described_class.find_by_app_id(client_app.app_id)).to eq client_app
+    end
+
+    it 'when not exists' do
+      expect(described_class.find_by_app_id('inexistent')).to be_nil
+    end
+  end
+
+  describe '.authenticate' do
+    it 'when exists' do
+      expect(described_class.authenticate(client_app.app_id, client_app.app_secret)).to eq client_app
+    end
+
+    it 'when not exists' do
+      expect(described_class.authenticate('inexistent', 'inexistent')).to be_nil
+    end
   end
 end
