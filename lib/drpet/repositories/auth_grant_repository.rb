@@ -52,4 +52,10 @@ class AuthGrantRepository
       where(client_app_id: client_app_id, code: code)
     end.first
   end
+
+  def self.find_by_access_token(access_token)
+    query do
+      where(access_token: access_token)
+    end.first
+  end
 end

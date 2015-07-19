@@ -130,4 +130,22 @@ RSpec.describe AuthGrantRepository do
       end
     end
   end
+
+  describe '.find_by_access_token' do
+    subject { described_class.find_by_access_token('access_token') }
+
+    context 'when exists' do
+      let!(:auth_grant) { AuthGrantRepository.create(AuthGrant.new(params)) }
+
+      it 'returns existent auth grant' do
+        expect(subject).to eq auth_grant
+      end
+    end
+
+    context 'when not exists' do
+      it 'returns an instance of auth grant' do
+        expect(subject).to be_nil
+      end
+    end
+  end
 end
