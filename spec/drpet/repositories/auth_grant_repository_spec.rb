@@ -9,6 +9,7 @@ RSpec.describe AuthGrantRepository do
   let!(:client_app) { ClientAppRepository.create(ClientApp.new(client_app_params)) }
 
   after do
+    AuthGrantRepository.clear
     ClientAppRepository.clear
     UserRepository.clear
   end
@@ -109,6 +110,24 @@ RSpec.describe AuthGrantRepository do
     it 'returns a unique refresh token' do
       expect(described_class).to receive(:unique_token_for).with(:refresh_token).and_return('refresh_token')
       expect(subject).to eq 'refresh_token'
+    end
+  end
+
+  describe '.find_by_client_app_id_and_code' do
+    subject { described_class.find_by_client_app_id_and_code(client_app.id, 'code') }
+
+    context 'when exists' do
+      let!(:auth_grant) { AuthGrantRepository.create(AuthGrant.new(params)) }
+
+      it 'returns existent auth grant' do
+        expect(subject).to eq auth_grant
+      end
+    end
+
+    context 'when not exists' do
+      it 'returns an instance of auth grant' do
+        expect(subject).to be_nil
+      end
     end
   end
 end

@@ -46,4 +46,10 @@ class AuthGrantRepository
   def self.unique_token_for_refresh_token
     unique_token_for(:refresh_token)
   end
+
+  def self.find_by_client_app_id_and_code(client_app_id, code)
+    query do
+      where(client_app_id: client_app_id, code: code)
+    end.first
+  end
 end
