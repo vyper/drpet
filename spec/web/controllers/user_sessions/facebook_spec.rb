@@ -35,6 +35,17 @@ describe Web::Controllers::UserSessions::Facebook do
     expect(action.exposures[:flash][:notice]).to eq 'Signed in successfully' # TODO: i18n
   end
 
+  context 'redirect to referrer' do
+    let(:params) { { 'omniauth.auth' => omniauth_auth, 'rack.session' => { 'redirect_to' => '/lala' } } }
+
+    it 'valid user is successful' do
+      response = action.call(params)
+
+      expect(response[0]).to eq 302
+      expect(response[1]['Location']).to eq '/lala'
+    end
+  end
+
   context 'error on find or create' do
     it 'fails' do
       expect(UserRepository).to receive(:find_or_create_from_omniauth).and_return(nil)

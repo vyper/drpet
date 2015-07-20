@@ -2,9 +2,6 @@ require 'lotus/helpers'
 
 # TODO Found better local for require
 require 'omniauth-facebook'
-# TODO Found better local for require
-require_relative 'controllers/authenticable'
-require_relative 'controllers/flashable'
 
 module Web
   class Application < Lotus::Application
@@ -195,8 +192,8 @@ module Web
       #
       # See: http://www.rubydoc.info/gems/lotus-controller#Configuration
       controller.prepare do
-        include Web::Controllers::Flashable
-        include Web::Controllers::Authenticable
+        include Extensions::Controllers::Flashable
+        include Extensions::Controllers::Authenticable
       end
 
       # Configure the code that will yield each time Web::View is included

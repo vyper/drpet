@@ -6,9 +6,7 @@ module Web::Controllers::UserSessions
       user = UserRepository.find_by_email(params['user']['email'])
 
       if user && user.password == params['user']['password']
-        session[:logged_user_id] = user.id
-        flash[:notice] = 'Signed in successfully' # TODO i18n?
-        redirect_to routes.root_path
+        sign_in_and_redirect(user)
       else
         flash[:notice] = 'Invalid email or password' # TODO i18n?
         redirect_to routes.new_user_session_path

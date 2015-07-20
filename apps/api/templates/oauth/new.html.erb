@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Authorization request - Dr Pet</title>
+  </head>
+  <body>
+    <h1>Authorization request</h1>
+
+    <p>
+      <%= client_app.name %> would like to access your data.
+      Only accept if you trust this application.
+    </p>
+
+    <p>I authorize <%= client_app.name %> to:</p>
+
+    <%=
+      form_for :client_app, routes.oauth_authorize_path do
+        hidden_field :app_id, value: client_app.app_id
+
+        label 'read', for: :permissions
+        check_box :permissions, name: 'client_app[permissions][]', checked_value: 'read', checked: 'checked'
+
+        label 'write', for: :permissions
+        check_box :permissions, name: 'client_app[permissions][]', checked_value: 'write', checked: 'checked'
+
+        submit 'Authorize this application'
+      end
+    %>
+
+    <%# TODO: Redirect to referrer %>
+    <%= link_to 'Decline this request', '#' %>
+  </body>
+</html>
