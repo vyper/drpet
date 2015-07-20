@@ -7,6 +7,7 @@ module Web::Controllers::Pets
     expose :pet
 
     def call(params)
+      # TODO How I can apply more security here?
       @pet = PetRepository.find(params[:id])
     end
   end

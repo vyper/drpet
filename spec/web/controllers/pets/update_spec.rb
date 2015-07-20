@@ -4,19 +4,17 @@ require_relative '../../../../apps/web/controllers/pets/update'
 describe Web::Controllers::Pets::Update do
   let(:action) { described_class.new }
 
-  before do
-    @user = UserRepository.create(User.new(email: 'leo@nospam.org', password: '123456'))
-    @pet = PetRepository.create(Pet.new(name: 'Bacon'))
-  end
+  let!(:user) { UserRepository.create(User.new(email: 'leo@nospam.org', password: '123456')) }
+  let!(:pet)  { PetRepository.create(Pet.new(name: 'Bacon', user_id: user.id)) }
 
   after do
-   UserRepository.clear
    PetRepository.clear
+   UserRepository.clear
  end
 
   context 'logged user' do
-    let(:rack_session) { { 'logged_user_id' => @user.id } }
-    let(:params) { { id: @pet.id, 'pet' => pet_params, 'rack.session' => rack_session } }
+    let(:rack_session) { { 'logged_user_id' => user.id } }
+    let(:params) { { id: pet.id, 'pet' => pet_params, 'rack.session' => rack_session } }
 
     context 'invalid params' do
       let(:pet_params) { { 'name' => '' } }
@@ -41,7 +39,7 @@ describe Web::Controllers::Pets::Update do
       end
 
       it 'updates a pet' do
-        expect { action.call(params) }.to change { PetRepository.find(@pet.id).name }.from('Bacon').to('Zabelê')
+        expect { action.call(params) }.to change { PetRepository.find(pet.id).name }.from('Bacon').to('Zabelê')
       end
     end
   end

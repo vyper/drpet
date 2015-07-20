@@ -30,7 +30,7 @@ describe Web::Controllers::Pets::Create do
     end
 
     context 'valid params' do
-      let(:pet_params) { { 'name' => 'Bacon' } }
+      let(:pet_params) { { 'name' => 'Bacon', 'user_id' => @user.id } }
 
       it 'redirect to pets' do
         response = action.call(params)

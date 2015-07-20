@@ -6,7 +6,7 @@ describe Web::Controllers::Pets::Destroy do
 
   before do
     @user = UserRepository.create(User.new(email: 'leo@nospam.org', password: '123456'))
-    @pet = PetRepository.create(Pet.new(name: 'Bacon'))
+    @pet = PetRepository.create(Pet.new(name: 'Bacon', user_id: @user.id))
   end
 
   after do

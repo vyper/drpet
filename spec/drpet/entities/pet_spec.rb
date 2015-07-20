@@ -6,6 +6,8 @@ RSpec.describe Pet do
   #
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to coerce_attribute(:name).to(String) }
+  it { is_expected.to validate_presence_of(:user_id) }
+  it { is_expected.to coerce_attribute(:user_id).to(Integer) }
   it { is_expected.to coerce_attribute(:created_at).to(DateTime) }
   it { is_expected.to coerce_attribute(:updated_at).to(DateTime) }
 end
