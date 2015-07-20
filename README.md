@@ -7,5 +7,16 @@ My playground for [lotus](http://lotusrb.org).
 To you see app running is very simple!
 
 You have two options:
-- Access http://drpet.herokuapp.com and you use email `drpet@mcorp.io` and password `123456`; or
-- Use the API http://drpet.herokuapp.com/api/v1/pets
+
+### Website
+
+Access http://drpet.herokuapp.com using credentials:
+
+    email: drpet@mcorp.io
+    password: 123456
+
+### API
+
+```bash
+curl -H 'Authorization: token df44887813515d879119155520aa0280' -H "Accept: application/json" 'https://drpet.herokuapp.com/api/v1/pets'
+```
