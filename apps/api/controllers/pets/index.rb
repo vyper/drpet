@@ -4,6 +4,8 @@ module Api::Controllers::Pets
   class Index
     include Api::Action
 
+    before :authenticate!
+
     accept :json
 
     def call(params)

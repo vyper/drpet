@@ -6,6 +6,6 @@ require_relative '../apps/api/application'
 require_relative '../apps/web/application'
 
 Lotus::Container.configure do
-  mount Api::Application, at: '/api/v1'
+  mount Api::Application, at: '/api'
   mount Web::Application, at: '/'
 end
