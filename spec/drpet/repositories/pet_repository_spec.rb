@@ -16,8 +16,8 @@ RSpec.describe PetRepository do
     UserRepository.clear
   end
 
-  context '.all_owned_by' do
-    subject { PetRepository.all_owned_by(user1) }
+  context '.owned_by' do
+    subject { PetRepository.owned_by(user1) }
 
     it 'list only pets owned by user' do
       expect(subject).to include pet1
@@ -25,6 +25,24 @@ RSpec.describe PetRepository do
 
     it 'not list pets owned by other user' do
       expect(subject).to_not include pet2
+    end
+  end
+
+  context '.find_owned_by' do
+    context 'owned by user' do
+      subject { PetRepository.find_owned_by(pet1.id, user1) }
+
+      it 'returns pet' do
+        expect(subject).to eq pet1
+      end
+    end
+
+    context 'owned by other user' do
+      subject { PetRepository.find_owned_by(pet1.id, user2) }
+
+      it 'does not return pet' do
+        expect(subject).to be_nil
+      end
     end
   end
 end
