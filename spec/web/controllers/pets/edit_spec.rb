@@ -6,7 +6,7 @@ describe Web::Controllers::Pets::Edit do
 
   before do
     @user = UserRepository.create(User.new(email: 'leo@nospam.org', password: '123456'))
-    @pet = PetRepository.create(Pet.new(name: 'Bacon'))
+    @pet = PetRepository.create(Pet.new(name: 'Bacon', user_id: @user.id))
   end
 
   after do
@@ -21,6 +21,12 @@ describe Web::Controllers::Pets::Edit do
       response = action.call(params)
 
       expect(response[0]).to eq 200
+    end
+
+    it 'fails' do
+      response = action.call(params.merge(id: -1))
+
+      expect(response[0]).to eq 404
     end
   end
 

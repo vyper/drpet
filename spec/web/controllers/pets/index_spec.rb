@@ -2,31 +2,30 @@ require 'spec_helper'
 require_relative '../../../../apps/web/controllers/pets/index'
 
 describe Web::Controllers::Pets::Index do
-  let(:action) { Web::Controllers::Pets::Index.new }
+  let(:action) { described_class.new }
 
-  # TODO: Can I improve this using fixtures or factory_girl?
-  before { @user = UserRepository.create(User.new(email: 'leo@nospam.org', password: '123456')) }
-  after  { UserRepository.clear }
+  let!(:user) { UserRepository.create(User.new(email: 'leo@nospam.org', password: '123456')) }
+  let!(:pet) { PetRepository.create(Pet.new(name: 'Bacon', user_id: user.id)) }
+
+  after do
+    PetRepository.clear
+    UserRepository.clear
+  end
 
   context 'logged user' do
-    let(:params) { { 'rack.session' => { 'logged_user_id' => @user.id } } }
-
-    before do
-      PetRepository.create(Pet.new(name: 'Bacon'))
-      @pets = PetRepository.all
-    end
+    let(:params) { { 'rack.session' => { 'logged_user_id' => user.id } } }
 
     it 'is successful' do
       response = action.call(params)
 
       expect(response[0]).to eq 200
-      expect(action.pets).to eq @pets
+      expect(action.pets).to include pet
     end
 
     it 'exposures pets' do
       response = action.call(params)
 
-      expect(action.pets).to eq @pets
+      expect(action.pets).to include pet
     end
   end
 

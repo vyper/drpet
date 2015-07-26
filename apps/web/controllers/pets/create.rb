@@ -15,6 +15,7 @@ module Web::Controllers::Pets
 
     def call(params)
       @pet = Pet.new pet_params
+      @pet.user_id = current_user.id # TODO Improve this
 
       if params.valid?
         PetRepository.create(@pet)

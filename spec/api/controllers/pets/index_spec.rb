@@ -9,8 +9,8 @@ describe Api::Controllers::Pets::Index do
   let(:auth_params) { { code: 'code', access_token: 'access_token', refresh_token: 'refresh_token', permissions: 'permissions', client_app_id: client_app.id, user_id: user.id } }
   let(:params)      { { 'HTTP_ACCEPT' => 'application/json', 'HTTP_AUTHORIZATION' => "Authorization: token #{auth_grant.access_token}" } }
 
-  let!(:bacon)      { PetRepository.create(Pet.new(name: 'Bacon')) }
-  let!(:zabele)     { PetRepository.create(Pet.new(name: 'Zabelê')) }
+  let!(:bacon)      { PetRepository.create(Pet.new(name: 'Bacon', user_id: user.id)) }
+  let!(:zabele)     { PetRepository.create(Pet.new(name: 'Zabelê', user_id: user.id)) }
   let!(:user)       { UserRepository.create(User.new(user_params)) }
   let!(:client_app) { ClientAppRepository.create(ClientApp.new(app_params)) }
   let!(:auth_grant) { AuthGrantRepository.create(AuthGrant.new(auth_params)) }

@@ -6,7 +6,7 @@ describe Web::Controllers::Pets::Destroy do
 
   before do
     @user = UserRepository.create(User.new(email: 'leo@nospam.org', password: '123456'))
-    @pet = PetRepository.create(Pet.new(name: 'Bacon'))
+    @pet = PetRepository.create(Pet.new(name: 'Bacon', user_id: @user.id))
   end
 
   after do
@@ -26,6 +26,12 @@ describe Web::Controllers::Pets::Destroy do
 
     it 'removes pet' do
       expect { action.call(params) }.to change { PetRepository.all.size }.from(1).to(0)
+    end
+
+    it 'fails' do
+      response = action.call(params.merge(id: -1))
+
+      expect(response[0]).to eq 404
     end
   end
 

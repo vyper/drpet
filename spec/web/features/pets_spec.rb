@@ -1,9 +1,7 @@
 require 'features_helper'
 
 RSpec.describe 'Pets' do
-  before do
-    @user = UserRepository.create(User.new(uid: '1234', email: 'leo@nospam.org', password: '123456'))
-  end
+  let!(:user) { UserRepository.create(User.new(uid: '1234', email: 'leo@nospam.org', password: '123456')) }
 
   after do
     PetRepository.clear
@@ -26,7 +24,7 @@ RSpec.describe 'Pets' do
 
   context 'logged user' do
     before do
-      sign_in(@user)
+      sign_in(user)
     end
 
     context 'index' do
@@ -43,21 +41,15 @@ RSpec.describe 'Pets' do
       end
 
       context 'with pets' do
-        before do
-          @pet1 = PetRepository.create(Pet.new(name: 'Bacon'))
-          @pet2 = PetRepository.create(Pet.new(name: 'Zabelê'))
-        end
-
-        after do
-          PetRepository.clear
-        end
+        let!(:pet1) { PetRepository.create(Pet.new(name: 'Bacon', user_id: user.id)) }
+        let!(:pet2) { PetRepository.create(Pet.new(name: 'Zabelê', user_id: user.id)) }
 
         it 'displays all pets' do
           visit '/'
 
           expect(page.body).to have_css('.media-heading', count: 2)
-          expect(page.body).to have_content @pet1.name
-          expect(page.body).to have_content @pet2.name
+          expect(page.body).to have_content pet1.name
+          expect(page.body).to have_content pet2.name
           expect(page.body).to_not have_content 'No pets'
         end
       end
@@ -86,18 +78,16 @@ RSpec.describe 'Pets' do
     end
 
     context 'edit' do
-      before do
-        @pet = PetRepository.create(Pet.new(name: 'Bacon'))
-      end
+      let!(:pet) { PetRepository.create(Pet.new(name: 'Bacon', user_id: user.id)) }
 
       it 'shows logout button' do
-        visit "/pets/#{@pet.id}/edit"
+        visit "/pets/#{pet.id}/edit"
 
         expect(page.body).to have_button 'Logout'
       end
 
       it 'edit a pet' do
-        visit "/pets/#{@pet.id}/edit"
+        visit "/pets/#{pet.id}/edit"
 
         within '#pet-form' do
           fill_in 'pet-name', with: 'Zabelê'
@@ -112,9 +102,7 @@ RSpec.describe 'Pets' do
     end
 
     context 'destroy' do
-      before do
-        @pet = PetRepository.create(Pet.new(name: 'Bacon'))
-      end
+      let!(:pet) { PetRepository.create(Pet.new(name: 'Bacon', user_id: user.id)) }
 
       it 'destroys a pet' do
         visit '/pets'

@@ -7,7 +7,7 @@ module Web::Controllers::Pets
     expose :pets
 
     def call(params)
-      @pets = PetRepository.all
+      @pets = PetRepository.owned_by(current_user)
     end
   end
 end
