@@ -15,8 +15,8 @@ module Web::Controllers::Pets
     expose :pet
 
     def call(params)
-      # TODO How I can apply more security here?
-      @pet = PetRepository.find(params[:id])
+      @pet = PetRepository.find_owned_by(params[:id], current_user)
+      halt 404 if @pet.nil?
       @pet.update pet_params
 
       if params.valid?

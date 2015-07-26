@@ -22,6 +22,12 @@ describe Web::Controllers::Pets::Edit do
 
       expect(response[0]).to eq 200
     end
+
+    it 'fails' do
+      response = action.call(params.merge(id: -1))
+
+      expect(response[0]).to eq 404
+    end
   end
 
   context 'unlogged user' do

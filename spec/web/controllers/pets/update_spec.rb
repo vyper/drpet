@@ -41,6 +41,12 @@ describe Web::Controllers::Pets::Update do
       it 'updates a pet' do
         expect { action.call(params) }.to change { PetRepository.find(pet.id).name }.from('Bacon').to('Zabelê')
       end
+
+      it 'fails' do
+        response = action.call(params.merge(id: -1))
+
+        expect(response[0]).to eq 404
+      end
     end
   end
 
