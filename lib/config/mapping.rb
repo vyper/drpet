@@ -35,6 +35,7 @@ collection :pets do
   attribute :id,         Integer
   attribute :user_id,    Integer
   attribute :name,       String
+  attribute :image_id,   String
   attribute :created_at, DateTime
   attribute :updated_at, DateTime
 end
