@@ -2,6 +2,7 @@ require 'lotus/helpers'
 
 # TODO Found better local for require
 require 'omniauth-facebook'
+require 'aws-sdk'
 
 module Web
   class Application < Lotus::Application

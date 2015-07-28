@@ -8,6 +8,7 @@ module Web::Controllers::Pets
     params do
       param :pet do
         param :name, presence: true
+        param :image
       end
     end
 

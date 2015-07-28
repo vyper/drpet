@@ -13,8 +13,9 @@
 <% end %>
 
 <%=
-  form_for :pet, routes.pets_path do
+  form_for :pet, routes.pets_path, enctype: 'multipart/form-data' do
     text_field :name, value: pet.name, placeholder: 'name'
+    file_field :image
 
     submit 'Create'
   end
