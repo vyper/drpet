@@ -12,6 +12,17 @@ class PetPersistor
   end
 
   def call
+    # TODO: Change this process to flow:
+    #       1. Upload image to temp bucket
+    #       2. Persist entity
+    #       3. Move from temp bucket to official bucket
+    persist!
+    upload_image!
+  end
+
+  private
+
+  def persist!
     if @params.get('id')
       @pet = PetRepository.find_owned_by(@params.get('id'), @user)
       error! 'Pet not found' unless @pet
@@ -26,7 +37,24 @@ class PetPersistor
     @pet = PetRepository.persist(@pet)
   end
 
-  private
+  def upload_image!
+    if image = @params.get('pet.image')
+      filename = "pets/#{SecureRandom.hex}#{File.extname(image['tempfile'])}"
+
+      client.put_object(
+        bucket: ENV['AWS_BUCKET'],
+        key: filename,
+        body: File.open(image['tempfile']),
+        acl: 'public-read'
+      )
+    end
+    @pet.image_id = filename
+    @pet = PetRepository.persist(@pet)
+  end
+
+  def client
+    @client ||= Aws::S3::Client.new
+  end
 
   def valid?
     @user && @params

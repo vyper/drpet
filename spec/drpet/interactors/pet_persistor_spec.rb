@@ -16,12 +16,28 @@ describe PetPersistor do
     let(:params) { CreatePetParams.new(pet_params) }
 
     context 'valid params' do
-      let(:pet_params) { { 'pet' => { 'name' => 'Bacon' } } }
+      context 'without image' do
+        let(:pet_params) { { 'pet' => { 'name' => 'Bacon' } } }
 
-      it 'persists' do
-        expect {
-          subject.call
-        }.to change { PetRepository.all.count }.by(1)
+        it 'persists' do
+          expect {
+            subject.call
+          }.to change { PetRepository.all.count }.by(1)
+        end
+      end
+
+      context 'with image' do
+        let(:image_path) { File.expand_path('../../../support/vyper.jpg', __FILE__) }
+        let(:image)      { { 'filename' => 'vyper.jpg', 'type' => 'image/jpeg', 'name' => 'image', 'tempfile' => File.open(image_path) } }
+        let(:pet_params) { { 'pet' => { 'name' => 'Bacon', 'image' => image } } }
+
+        it 'persists and upload image' do
+          expect_any_instance_of(Aws::S3::Client).to receive(:put_object)
+
+          expect {
+            subject.call
+          }.to change { PetRepository.all.count }.by(1)
+        end
       end
     end
 
@@ -52,18 +68,42 @@ describe PetPersistor do
     end
 
     context 'existent' do
-      let(:pet)        { PetRepository.create(Pet.new(name: 'Bacon', user_id: user.id)) }
-      let(:pet_params) { { 'id' => pet.id, 'pet' => { 'name' => 'Bacon #2' } } }
+      let(:pet) { PetRepository.create(Pet.new(name: 'Bacon', user_id: user.id)) }
 
-      it 'successfully' do
-        result = subject.call
-        expect(result.success?).to be_truthy
+      context 'without image' do
+        let(:pet_params) { { 'id' => pet.id, 'pet' => { 'name' => 'Bacon #2' } } }
+
+        it 'successfully' do
+          result = subject.call
+          expect(result.success?).to be_truthy
+        end
+
+        it 'changes fields' do
+          expect {
+            subject.call
+          }.to change { PetRepository.find(pet.id).name }.from('Bacon').to('Bacon #2')
+        end
       end
 
-      it 'changes fields' do
-        expect {
-          subject.call
-        }.to change { PetRepository.find(pet.id).name }.from('Bacon').to('Bacon #2')
+      context 'with image' do
+        let(:image_path) { File.expand_path('../../../support/vyper.jpg', __FILE__) }
+        let(:image)      { { 'filename' => 'download.jpeg', 'type' => 'image/jpeg', 'name' => 'image', 'tempfile' => File.open(image_path) } }
+        let(:pet_params) { { 'id' => pet.id, 'pet' => { 'name' => 'Bacon #2', 'image' => image } } }
+
+        before do
+          expect_any_instance_of(Aws::S3::Client).to receive(:put_object)
+        end
+
+        it 'successfully' do
+          result = subject.call
+          expect(result.success?).to be_truthy
+        end
+
+        it 'changes fields' do
+          expect {
+            subject.call
+          }.to change { PetRepository.find(pet.id).name }.from('Bacon').to('Bacon #2')
+        end
       end
     end
   end
