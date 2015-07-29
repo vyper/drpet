@@ -21,6 +21,7 @@ module Web
       #
       load_paths << [
         'controllers',
+        'presenters',
         'views'
       ]
 
