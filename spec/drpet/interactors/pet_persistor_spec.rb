@@ -32,7 +32,9 @@ describe PetPersistor do
         let(:pet_params) { { 'pet' => { 'name' => 'Bacon', 'image' => image } } }
 
         it 'persists and upload image' do
-          expect_any_instance_of(Aws::S3::Client).to receive(:put_object)
+          expect_any_instance_of(Aws::S3::Client).to receive(:put_object).with(hash_including(:bucket, :key, :body, :acl))
+          expect_any_instance_of(Aws::S3::Client).to receive(:copy_object).with(hash_including(:bucket, :key, :copy_source, :acl))
+          expect_any_instance_of(Aws::S3::Client).to receive(:delete_object).with(hash_including(:bucket, :key))
 
           expect {
             subject.call
@@ -91,7 +93,9 @@ describe PetPersistor do
         let(:pet_params) { { 'id' => pet.id, 'pet' => { 'name' => 'Bacon #2', 'image' => image } } }
 
         before do
-          expect_any_instance_of(Aws::S3::Client).to receive(:put_object)
+          expect_any_instance_of(Aws::S3::Client).to receive(:put_object).with(hash_including(:bucket, :key, :body, :acl))
+          expect_any_instance_of(Aws::S3::Client).to receive(:copy_object).with(hash_including(:bucket, :key, :copy_source, :acl))
+          expect_any_instance_of(Aws::S3::Client).to receive(:delete_object).with(hash_including(:bucket, :key))
         end
 
         it 'successfully' do

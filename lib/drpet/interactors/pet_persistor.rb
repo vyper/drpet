@@ -12,17 +12,15 @@ class PetPersistor
   end
 
   def call
-    # TODO: Change this process to flow:
-    #       1. Upload image to temp bucket
-    #       2. Persist entity
-    #       3. Move from temp bucket to official bucket
+    find!
+    upload_image_to_cache!
     persist!
-    upload_image!
+    move_image_to_store!
   end
 
   private
 
-  def persist!
+  def find!
     if @params.get('id')
       @pet = PetRepository.find_owned_by(@params.get('id'), @user)
       error! 'Pet not found' unless @pet
@@ -31,25 +29,36 @@ class PetPersistor
     end
 
     @pet.update @params.get('pet')
-    error! 'Invalid params' unless @params.valid?
 
+    error! 'Invalid params' unless @params.valid?
+  end
+
+  def persist!
     @pet.user_id = @user.id
     @pet = PetRepository.persist(@pet)
   end
 
-  def upload_image!
+  def upload_image_to_cache!
     if image = @params.get('pet.image')
-      filename = "pets/#{SecureRandom.hex}#{File.extname(image['tempfile'])}"
+      @pet.image_id = "#{SecureRandom.hex}#{File.extname(image['tempfile'])}"
 
       client.put_object(
         bucket: ENV['AWS_BUCKET'],
-        key: filename,
+        key: "cache/pets/#{@pet.image_id}",
         body: File.open(image['tempfile']),
         acl: 'public-read'
       )
     end
-    @pet.image_id = filename
-    @pet = PetRepository.persist(@pet)
+  end
+
+  def move_image_to_store!
+    if not @pet.image_id.empty?
+      cache_key = "cache/pets/#{@pet.image_id}"
+      store_key = "store/pets/#{@pet.image_id}"
+
+      client.copy_object bucket: ENV['AWS_BUCKET'], copy_source: "#{ENV['AWS_BUCKET']}/#{cache_key}", key: store_key, acl: 'public-read'
+      client.delete_object bucket: ENV['AWS_BUCKET'], key: cache_key
+    end
   end
 
   def client
