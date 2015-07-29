@@ -7,7 +7,7 @@ module Web::Controllers::Pets
     def call(params)
       @pet = PetRepository.find_owned_by(params[:id], current_user)
       halt 404 if @pet.nil?
-      PetRepository.delete(@pet)
+      PetDestroyer.new(@pet).call
 
       redirect_to routes.pets_path
     end
