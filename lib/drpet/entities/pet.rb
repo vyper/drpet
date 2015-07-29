@@ -1,6 +1,7 @@
 class Pet
   include Lotus::Entity
   include Lotus::Validations
+  include Lotus::Entity::DirtyTracking
 
   attribute :name,       type: String,   presence: true
   attribute :user_id,    type: Integer,  presence: true

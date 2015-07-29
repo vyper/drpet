@@ -108,6 +108,20 @@ describe PetPersistor do
             subject.call
           }.to change { PetRepository.find(pet.id).name }.from('Bacon').to('Bacon #2')
         end
+
+        context 'with old and new image' do
+          let(:pet) { PetRepository.create(Pet.new(name: 'Bacon', image_id: 'xxx.jpg', user_id: user.id)) }
+
+          before do
+            expect_any_instance_of(Aws::S3::Client).to receive(:delete_object).with(hash_including(:bucket, :key))
+          end
+
+          it 'changes fields' do
+            expect {
+              subject.call
+            }.to change { PetRepository.find(pet.id).image_id }
+          end
+        end
       end
     end
   end

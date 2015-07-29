@@ -35,6 +35,11 @@ class PetPersistor
 
   def persist!
     @pet.user_id = @user.id
+
+    if @pet.changed_attributes.keys.include?(:image_id) && !@pet.changed_attributes[:image_id].empty?
+      client.delete_object bucket: ENV['AWS_BUCKET'], key: "store/pets/#{@pet.changed_attributes[:image_id]}"
+    end
+
     @pet = PetRepository.persist(@pet)
   end
 
