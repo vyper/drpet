@@ -19,6 +19,9 @@ gem 'pg'
 # webserver
 gem 'puma'
 
+# aws
+gem 'aws-sdk', '~> 2'
+
 group :development, :test do
   gem 'byebug'
 end

@@ -19,13 +19,13 @@ describe Web::Controllers::Pets::Index do
       response = action.call(params)
 
       expect(response[0]).to eq 200
-      expect(action.pets).to include pet
+      expect(action.pets.first.id).to eq pet.id
     end
 
     it 'exposures pets' do
       response = action.call(params)
 
-      expect(action.pets).to include pet
+      expect(action.pets.first.id).to eq pet.id
     end
   end
 

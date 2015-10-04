@@ -6,29 +6,23 @@ module Web::Controllers::Pets
 
     # TODO Move to other class
     params do
-      param :id, type: Integer, presence: true
+      param :id, presence: true
       param :pet do
-        param :name, type: String, presence: true
+        param :name, presence: true
+        param :image
       end
     end
 
     expose :pet
 
     def call(params)
-      @pet = PetRepository.find_owned_by(params[:id], current_user)
+      result = PetPersistor.new(params, current_user).call
+      @pet = result.pet
       halt 404 if @pet.nil?
-      @pet.update pet_params
 
-      if params.valid?
-        PetRepository.update(@pet)
+      if result.success?
         redirect_to routes.pets_path
       end
-    end
-
-    private
-
-    def pet_params
-      params[:pet]
     end
   end
 end

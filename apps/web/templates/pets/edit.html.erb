@@ -13,9 +13,13 @@
 <% end %>
 
 <%=
-  form_for :pet, routes.pet_path(pet.id), method: :patch do
+  form_for :pet, routes.pet_path(pet.id), method: :patch, enctype: 'multipart/form-data' do
     text_field :name, value: pet.name, placeholder: 'name'
+    file_field :image
 
     submit 'Update'
   end
 %>
+
+<%# TODO I don't like this ): %>
+<%= pet_image_tag %>
