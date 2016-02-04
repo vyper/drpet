@@ -7,7 +7,7 @@ gem 'rake'
 
 # lotus
 gem 'lotusrb',       '0.4.0' # TODO: Wait for fix in this issue: https://github.com/lotus/lotus/issues/30
-gem 'lotus-model',   '~> 0.5'
+gem 'lotus-model'
 
 # auth
 gem 'bcrypt'
