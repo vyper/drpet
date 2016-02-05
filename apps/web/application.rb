@@ -1,3 +1,4 @@
+require 'lotus/assets'
 require 'lotus/helpers'
 
 # TODO Found better local for require
@@ -92,7 +93,7 @@ module Web
       # Default format for the requests that don't specify an HTTP_ACCEPT header
       # Argument: A symbol representation of a mime type, default to :html
       #
-      # default_format :html
+      # default_request_format :html
 
       # HTTP Body parsers
       # Parse non GET responses body for a specific mime type
@@ -122,17 +123,15 @@ module Web
       # ASSETS
       #
 
-      # Specify sources for assets
-      # The directory `public/` is added by default
-      #
-      # assets << [
-      #   'vendor/javascripts'
-      # ]
+      assets do
+        javascript_compressor :builtin
+        stylesheet_compressor :builtin
 
-      # Enabling serving assets
-      # Defaults to false
-      #
-      # serve_assets false
+        sources << [
+          'assets',
+          # 'vendor/assets'
+        ]
+      end
 
       ##
       # SECURITY
@@ -204,6 +203,7 @@ module Web
       # See: http://www.rubydoc.info/gems/lotus-view#Configuration
       view.prepare do
         include Lotus::Helpers
+        include Web::Assets::Helpers
       end
     end
 
@@ -213,9 +213,6 @@ module Web
     configure :development do
       # Don't handle exceptions, render the stack trace
       handle_exceptions false
-
-      # Serve static assets during development
-      serve_assets      true
     end
 
     ##
@@ -224,9 +221,6 @@ module Web
     configure :test do
       # Don't handle exceptions, render the stack trace
       handle_exceptions false
-
-      # Serve static assets during development
-      serve_assets      true
     end
 
     ##
@@ -237,9 +231,15 @@ module Web
       # host   'example.org'
       # port   443
 
-      # TODO Improve this in the future
-      # Serve static assets during development
-      serve_assets      true
+      assets do
+        compile false
+        digest  true
+
+        # CDN Mode (optional)
+        # scheme 'https'
+        # host   '123.cloudfront.net'
+        # port   443
+      end
     end
   end
 end

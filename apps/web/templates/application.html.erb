@@ -7,8 +7,7 @@
     <title>Dr Pet</title>
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/stylesheets/flat-ui.min.css" rel="stylesheet">
-    <link href="/stylesheets/application.css" rel="stylesheet">
+    <%= stylesheet 'flat-ui.min', 'application' %>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -57,7 +56,7 @@
 
     <%= yield %>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="/javascripts/flat-ui.min.js"></script>
+    <%= javascript '//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js' %>
+    <%= javascript 'flat-ui.min' %>
   </body>
 </html>

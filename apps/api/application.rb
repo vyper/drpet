@@ -82,7 +82,7 @@ module Api
       # Default format for the requests that don't specify an HTTP_ACCEPT header
       # Argument: A symbol representation of a mime type, default to :html
       #
-      # default_format :html
+      # default_request_format :html
 
       # HTTP Body parsers
       # Parse non GET responses body for a specific mime type
