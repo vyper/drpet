@@ -1,5 +1,5 @@
 class PetRepository
-  include Lotus::Repository
+  include Hanami::Repository
 
   def self.owned_by(user)
     query do

@@ -3,7 +3,7 @@ require_relative '../../../../apps/web/views/pets/edit'
 
 describe Web::Views::Pets::Edit do
   let(:exposures) { Hash[pet: pet] }
-  let(:template)  { Lotus::View::Template.new('apps/web/templates/pets/edit.html.erb') }
+  let(:template)  { Hanami::View::Template.new('apps/web/templates/pets/edit.html.erb') }
   let(:view)      { Web::Views::Pets::Edit.new(template, exposures) }
   let(:rendered)  { view.render }
   let(:pet)       { PetRepository.create(Pet.new(name: 'Bacon', image_id: 'image_id.jpg', user_id: user.id)) }

@@ -1,7 +1,7 @@
-require 'lotus/interactor'
+require 'hanami/interactor'
 
 class PetPersistor
-  include Lotus::Interactor
+  include Hanami::Interactor
 
   expose :params, :user, :pet
 

@@ -1,6 +1,6 @@
 class ClientApp
-  include Lotus::Entity
-  include Lotus::Validations
+  include Hanami::Entity
+  include Hanami::Validations
 
   attribute :name,         type: String,   presence: true
   attribute :app_id,       type: String,   presence: true

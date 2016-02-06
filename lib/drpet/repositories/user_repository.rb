@@ -1,5 +1,5 @@
 class UserRepository
-  include Lotus::Repository
+  include Hanami::Repository
 
   def self.find_by_email(email)
     query do

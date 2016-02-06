@@ -1,6 +1,6 @@
 class AuthGrant
-  include Lotus::Entity
-  include Lotus::Validations
+  include Hanami::Entity
+  include Hanami::Validations
 
   attribute :code,          type: String,  presence: true
   attribute :access_token,  type: String,  presence: true

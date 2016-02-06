@@ -5,9 +5,9 @@ ruby '2.3.0'
 gem 'bundler'
 gem 'rake'
 
-# lotus
-gem 'lotusrb',       '0.4.0' # TODO: Wait for fix in this issue: https://github.com/lotus/lotus/issues/30
-gem 'lotus-model',   '~> 0.5'
+# hanami
+gem 'hanami', '~> 0.7.1'
+gem 'hanami-model'
 
 # auth
 gem 'bcrypt'
@@ -23,11 +23,11 @@ gem 'puma'
 gem 'aws-sdk', '~> 2'
 
 group :development, :test do
-  gem 'byebug'
+  gem 'pry'
 end
 
 group :test do
-  gem 'shoulda-lotus'
+  gem 'shoulda-hanami'
   gem 'rspec'
   gem 'capybara'
   gem 'codeclimate-test-reporter', group: :test, require: nil

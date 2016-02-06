@@ -1,7 +1,7 @@
-require 'lotus/helpers'
+require 'hanami/helpers'
 
 module Api
-  class Application < Lotus::Application
+  class Application < Hanami::Application
     configure do
       ##
       # BASIC
@@ -22,7 +22,7 @@ module Api
 
       # Handle exceptions with HTTP statuses (true) or don't catch them (false).
       # Defaults to true.
-      # See: http://www.rubydoc.info/gems/lotus-controller/#Exceptions_management
+      # See: http://www.rubydoc.info/gems/hanami-controller/#Exceptions_management
       #
       # handle_exceptions true
 
@@ -31,7 +31,7 @@ module Api
       #
 
       # Routes definitions for this application
-      # See: http://www.rubydoc.info/gems/lotus-router#Usage
+      # See: http://www.rubydoc.info/gems/hanami-router#Usage
       #
       routes 'config/routes'
 
@@ -82,7 +82,7 @@ module Api
       # Default format for the requests that don't specify an HTTP_ACCEPT header
       # Argument: A symbol representation of a mime type, default to :html
       #
-      # default_format :html
+      # default_request_format :html
 
       # HTTP Body parsers
       # Parse non GET responses body for a specific mime type
@@ -181,7 +181,7 @@ module Api
       # Configure the code that will yield each time Api::Action is included
       # This is useful for sharing common functionality
       #
-      # See: http://www.rubydoc.info/gems/lotus-controller#Configuration
+      # See: http://www.rubydoc.info/gems/hanami-controller#Configuration
       controller.prepare do
         include Extensions::Controllers::Authenticable
       end
@@ -189,9 +189,9 @@ module Api
       # Configure the code that will yield each time Api::View is included
       # This is useful for sharing common functionality
       #
-      # See: http://www.rubydoc.info/gems/lotus-view#Configuration
+      # See: http://www.rubydoc.info/gems/hanami-view#Configuration
       view.prepare do
-        include Lotus::Helpers
+        include Hanami::Helpers
       end
     end
 

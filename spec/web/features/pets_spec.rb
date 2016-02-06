@@ -12,13 +12,13 @@ RSpec.describe 'Pets' do
     it 'index' do
       visit '/'
 
-      expect(current_path).to eq '/login'
+      expect(page).to have_current_path('/login')
     end
 
     it 'new' do
       visit '/pets/new'
 
-      expect(current_path).to eq '/login'
+      expect(page).to have_current_path('/login')
     end
   end
 
@@ -71,7 +71,7 @@ RSpec.describe 'Pets' do
 
         click_on 'Create'
 
-        expect(current_path).to eq '/pets'
+        expect(page).to have_current_path('/pets')
         expect(page.body).to have_css('.media-heading', text: 'Romeo')
         expect(page.body).to_not have_content 'No pets'
       end
@@ -95,7 +95,7 @@ RSpec.describe 'Pets' do
 
         click_on 'Update'
 
-        expect(current_path).to eq '/pets'
+        expect(page).to have_current_path('/pets')
         expect(page.body).to have_css('.media-heading', text: 'Zabelê')
         expect(page.body).to_not have_content 'No pets'
       end
@@ -111,7 +111,7 @@ RSpec.describe 'Pets' do
           click_on 'Destroy'
         end
 
-        expect(current_path).to eq '/pets'
+        expect(page).to have_current_path('/pets')
         expect(page.body).to_not have_css('.media-heading')
         expect(page.body).to_not have_content 'Bacon'
         expect(page.body).to have_content 'No pets'

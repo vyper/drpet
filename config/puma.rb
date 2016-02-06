@@ -4,4 +4,4 @@ threads Integer(ENV['MIN_THREADS']  || 1), Integer(ENV['MAX_THREADS'] || 16)
 preload_app!
 
 port        ENV['PORT']     || 3000
-environment ENV['RACK_ENV'] || ENV['LOTUS_ENV'] || 'development'
+environment ENV['RACK_ENV'] || ENV['HANAMI_ENV'] || 'development'

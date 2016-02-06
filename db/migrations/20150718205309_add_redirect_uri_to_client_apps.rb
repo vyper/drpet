@@ -1,4 +1,4 @@
-Lotus::Model.migration do
+Hanami::Model.migration do
   change do
     add_column :client_apps, :redirect_uri, String, null: false
   end

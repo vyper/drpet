@@ -1,7 +1,7 @@
-require 'lotus/interactor'
+require 'hanami/interactor'
 
 class PetDestroyer
-  include Lotus::Interactor
+  include Hanami::Interactor
 
   expose :pet
 

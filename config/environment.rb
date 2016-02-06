@@ -1,11 +1,11 @@
 require 'rubygems'
 require 'bundler/setup'
-require 'lotus/setup'
+require 'hanami/setup'
 require_relative '../lib/drpet'
 require_relative '../apps/api/application'
 require_relative '../apps/web/application'
 
-Lotus::Container.configure do
+Hanami::Container.configure do
   mount Api::Application, at: '/api'
   mount Web::Application, at: '/'
 end

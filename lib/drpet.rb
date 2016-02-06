@@ -1,9 +1,9 @@
-require 'lotus/model'
+require 'hanami/model'
 
 Dir["#{ __dir__ }/drpet/**/*.rb"].each { |file| require_relative file }
 Dir["#{ __dir__ }/extensions/**/*.rb"].each { |file| require_relative file }
 
-Lotus::Model.configure do
+Hanami::Model.configure do
   ##
   # Database adapter
   #

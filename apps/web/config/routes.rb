@@ -1,5 +1,5 @@
 # Configure your routes here
-# See: http://www.rubydoc.info/gems/lotus-router/#Usage
+# See: http://www.rubydoc.info/gems/hanami-router/#Usage
 get    '/', to: 'pets#index',            as: :root
 
 get    '/login',  to: 'user_sessions#new',      as: :new_user_session
