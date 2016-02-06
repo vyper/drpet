@@ -1,5 +1,5 @@
 class AuthGrantRepository
-  include Lotus::Repository
+  include Hanami::Repository
 
   def self.find_or_create_by_client_app_id_and_user_id(client_app_id, user_id)
     client_app = find_by_app_id_and_user_id(client_app_id, user_id)

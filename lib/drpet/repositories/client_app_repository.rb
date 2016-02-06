@@ -1,5 +1,5 @@
 class ClientAppRepository
-  include Lotus::Repository
+  include Hanami::Repository
 
   def self.find_by_app_id(app_id)
     query do

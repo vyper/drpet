@@ -24,7 +24,7 @@ RSpec.describe 'Login' do
       end
 
       expect(page.body).to have_content 'Invalid email or password'
-      expect(page).to have_current_path('//login')
+      expect(page).to have_current_path('/login')
     end
 
     it 'invalid password' do
@@ -38,7 +38,7 @@ RSpec.describe 'Login' do
       end
 
       expect(page.body).to have_content 'Invalid email or password'
-      expect(page).to have_current_path('//login')
+      expect(page).to have_current_path('/login')
     end
 
     it 'invalid email' do
@@ -52,7 +52,7 @@ RSpec.describe 'Login' do
       end
 
       expect(page.body).to have_content 'Invalid email or password'
-      expect(page).to have_current_path('//login')
+      expect(page).to have_current_path('/login')
     end
 
     it 'valid fields' do
@@ -66,7 +66,7 @@ RSpec.describe 'Login' do
       end
 
       expect(page.body).to have_content 'Signed in successfully'
-      expect(page).to have_current_path('//')
+      expect(page).to have_current_path('/')
     end
   end
 
@@ -78,7 +78,7 @@ RSpec.describe 'Login' do
       click_link 'using facebook'
 
       expect(page.body).to have_content 'Signed in successfully'
-      expect(page).to have_current_path('//')
+      expect(page).to have_current_path('/')
     end
 
     it 'can not join using invalid credentials' do
@@ -88,7 +88,7 @@ RSpec.describe 'Login' do
       click_link 'using facebook'
 
       expect(page.body).to have_content 'Error on facebook authentication'
-      expect(page).to have_current_path('//login')
+      expect(page).to have_current_path('/login')
     end
   end
 
@@ -98,6 +98,6 @@ RSpec.describe 'Login' do
     visit '/'
     click_button 'Logout'
 
-    expect(page).to have_current_path('//login')
+    expect(page).to have_current_path('/login')
   end
 end

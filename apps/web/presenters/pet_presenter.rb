@@ -1,5 +1,5 @@
 class PetPresenter
-  include Lotus::Presenter
+  include Hanami::Presenter
 
   UrlDefault = 'http://placehold.it/80x80'.freeze
   # TODO Duplicated... );

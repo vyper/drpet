@@ -8,7 +8,7 @@ RSpec.describe 'OAuth' do
     it 'GET #new' do
       visit "/api/oauth/new?app_id=#{client_app.app_id}"
 
-      expect(page).to have_current_path('//login')
+      expect(page).to have_current_path('/login')
     end
   end
 
@@ -18,7 +18,7 @@ RSpec.describe 'OAuth' do
     context 'GET #new' do
       it 'invalid param' do
         visit '/api/oauth/new'
-        expect(page).to have_current_path('//')
+        expect(page).to have_current_path('/')
       end
 
       it 'shows client app name' do

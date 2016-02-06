@@ -1,12 +1,12 @@
-require 'lotus/assets'
-require 'lotus/helpers'
+require 'hanami/assets'
+require 'hanami/helpers'
 
 # TODO Found better local for require
 require 'omniauth-facebook'
 require 'aws-sdk'
 
 module Web
-  class Application < Lotus::Application
+  class Application < Hanami::Application
     configure do
       ##
       # BASIC
@@ -28,7 +28,7 @@ module Web
 
       # Handle exceptions with HTTP statuses (true) or don't catch them (false).
       # Defaults to true.
-      # See: http://www.rubydoc.info/gems/lotus-controller/#Exceptions_management
+      # See: http://www.rubydoc.info/gems/hanami-controller/#Exceptions_management
       #
       # handle_exceptions true
 
@@ -37,7 +37,7 @@ module Web
       #
 
       # Routes definitions for this application
-      # See: http://www.rubydoc.info/gems/lotus-router#Usage
+      # See: http://www.rubydoc.info/gems/hanami-router#Usage
       #
       routes 'config/routes'
 
@@ -84,7 +84,7 @@ module Web
       # Configure Rack middleware for this application
       #
       # middleware.use Rack::Protection
-      # TODO Check for duplicate session definition. Issue opened on github: https://github.com/lotus/lotus/issues/283
+      # TODO Check for duplicate session definition. Issue opened on github: https://github.com/hanami/hanami/issues/283
       middleware.use Rack::Session::Cookie, secret: ENV['SESSIONS_SECRET']
       middleware.use OmniAuth::Builder do
         provider :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET']
@@ -191,7 +191,7 @@ module Web
       # Configure the code that will yield each time Web::Action is included
       # This is useful for sharing common functionality
       #
-      # See: http://www.rubydoc.info/gems/lotus-controller#Configuration
+      # See: http://www.rubydoc.info/gems/hanami-controller#Configuration
       controller.prepare do
         include Extensions::Controllers::Flashable
         include Extensions::Controllers::Authenticable
@@ -200,9 +200,9 @@ module Web
       # Configure the code that will yield each time Web::View is included
       # This is useful for sharing common functionality
       #
-      # See: http://www.rubydoc.info/gems/lotus-view#Configuration
+      # See: http://www.rubydoc.info/gems/hanami-view#Configuration
       view.prepare do
-        include Lotus::Helpers
+        include Hanami::Helpers
         include Web::Assets::Helpers
       end
     end
