@@ -129,7 +129,7 @@ module Web
 
         sources << [
           'assets',
-          # 'vendor/assets'
+          'vendor/assets'
         ]
       end
 
